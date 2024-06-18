@@ -30,7 +30,7 @@
   const ingresar = () => {
     intento.value = true;
     if (validName.value) {
-      store.loguear({ ...nombre.value }); 
+      store.loguear(nombre.value); 
       route.push('/HomeView');
       intento.value = false;
     }
