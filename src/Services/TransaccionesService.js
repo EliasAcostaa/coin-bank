@@ -4,6 +4,7 @@ import apiClient from './ApiTransactionsService'
 
 
 class TransactionsService{
+    
 
     constructor(){
         this.movimientos = ref([])
@@ -11,6 +12,25 @@ class TransactionsService{
 
     getMovimientos(){
         return this.movimientos.value
+    }
+
+    async deleteMovimiento(id){
+        try{
+           await apiClient.delete(`/transactions/${id}`)
+           await this.fetchTransactions()
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    async editMovimiento(movimientoE){
+        try{
+            console.log(movimientoE._id + " " + movimientoE.money)
+           await apiClient.patch(`/transactions/${movimientoE._id}`, movimientoE)
+           await this.fetchTransactions()
+        }catch(error){
+            console.log(error)
+        }
     }
 
     async fetchTransactions(){
