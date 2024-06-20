@@ -2,7 +2,7 @@
     <div id="navbar">
         <nav>
             <router-link :to="{name: 'HomeView'}">home</router-link>
-            <router-link :to="{name: 'VenderView'}">vender</router-link>
+            <router-link :to="{name: 'OperarView'}">Operar</router-link>
             <router-link :to="{name: 'HistorialView'}">Historial</router-link>
             <button type="button" @click="logOut()">Cerrar Sesion</button>
         </nav>
