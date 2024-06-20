@@ -2,17 +2,10 @@
   <div>
     <h3>Registrese</h3>
     <form>
-      <label for="Usuario">¡Ingrese su nombre de Usuario!</label>
+      <label for="Usuario">Ingrese su nombre de Usuario</label>
       <input type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
     </form>
-    <p v-if="!validName && intento">Introduce una contraseña de al menos seis caracteres.
-      <ul>
-        <li>Debe contener números</li>
-        <li>Debe contener letras</li>
-        <li>Debe contener signos de puntuación (tales como "!", "?")</li>
-        <li>No puede incluir espacios</li>
-      </ul>  
-    </p>
+    <p v-if="!validName && intento">Introduce una combinacion de al menos seis numeros, letras y signos de puntuacion(como ! y ?), no debe incluir espacios</p>
     <button type="button" @click="ingresar()">ingresar</button>
   </div>
 </template>
