@@ -58,7 +58,7 @@ class TransactionsService{
             await apiClient.patch(`/transactions/${movimientoE._id}`, movimientoE)
         }catch(error){
             console.log(error)
-        }
+        } 
     }
 
     async postMovimiento(movimiento){

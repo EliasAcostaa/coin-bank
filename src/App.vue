@@ -11,7 +11,7 @@
 
 <script setup>
   import { useUserStore } from './store/User';
-  import NavBar from './components/NavBarComponent.vue'
+  import NavBar from './components/NavBarComponent.vue';
   const store = useUserStore();
 </script>
 

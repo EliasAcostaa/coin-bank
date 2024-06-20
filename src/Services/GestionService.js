@@ -14,7 +14,7 @@ class GestionService{
     getOperaciones(){
         return this.Operaciones
     }
-
+ 
     setMonedas(codigop, monedap){
         this.Monedas.push({
             codigo: codigop,
