@@ -29,12 +29,10 @@
                 <label for="Hora">Hora</label>
                 <input type="time" id="Hora" v-model="date.hora">
             </div>
-            <p>{{ operacion.datetime }}</p>
         </form>
         <div>
             <button @click="realizarMovimiento">{{ opp.nombre }}</button>
         </div>
-
     </div>
     <div v-else>
       <h3>para poder Vender y Comprar usted debe iniciar sesion</h3>
@@ -92,7 +90,15 @@
     })
 
     const updateFecha = () => {
-        operacion.value.datetime = `${date.value.fecha.slice(8,10)}-${date.value.fecha.slice(5,7)}-${date.value.fecha.slice(0,4)} ${date.value.hora}`;
+        const fecha = new Date(
+            parseInt(date.value.fecha.slice(0,4)),
+            parseInt(date.value.fecha.slice(5,7)) - 1 ,
+            parseInt(date.value.fecha.slice(8,10)),
+            parseInt(date.value.hora.slice(0,2)),
+            parseInt(date.value.hora.slice(3,5))
+        )
+        operacion.value.datetime = fecha.toISOString()
+        //operacion.value.datetime = `${date.value.fecha.slice(8,10)}-${date.value.fecha.slice(5,7)}-${date.value.fecha.slice(0,4)} ${date.value.hora}`;
     }
 
     onMounted(() => {

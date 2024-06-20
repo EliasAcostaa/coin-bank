@@ -2,8 +2,8 @@
     <div v-if="visible" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <h2>{{ props.movimiento._id }}</h2>
-        <p>Tipo de Transaccion: {{ props.movimiento.action }}</p>
-        <p>CriptoMoneda: {{ props.movimiento.crypto_code }}</p>
+        <p>Tipo de Transaccion: {{ nombreOp(props.movimiento.action).nombre }}</p>
+        <p>CriptoMoneda: {{ nombreMoneda(props.movimiento.crypto_code).nombre }}</p>
         <p>cantidad: {{ props.movimiento.crypto_amount }}</p>
         <p>total: ${{ props.movimiento.money }}</p>
         <p>fecha: {{ props.movimiento.datetime }}</p>
@@ -14,6 +14,10 @@
 
 <script setup>
 import { defineProps, defineEmits } from 'vue'
+import GestionService from '@/Services/GestionService';
+
+  const GestionS = new GestionService()
+
   const props = defineProps({
     visible: {
       type: Boolean,
@@ -24,6 +28,14 @@ import { defineProps, defineEmits } from 'vue'
       required: true
     }
   })
+
+  const nombreMoneda = (codigo) => {
+    return GestionS.getMonedas().find(moneda => moneda.codigo === codigo)
+  }
+
+  const nombreOp = (codigo) => {
+    return GestionS.getOperaciones().find(accion => accion.opcion === codigo)
+  }
   
   const emitEvent = defineEmits(['update:visible'])
   

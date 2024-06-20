@@ -21,14 +21,12 @@
                         <td>{{ movimiento.crypto_amount }}</td>
                         <td>${{ movimiento.money }}</td>
                         <td>{{ formatearFecha(movimiento.datetime) }}</td>
-                        <td><button @click="abrirModal(movimiento)" >mas info</button>
-                            <InfoModal :visible="showModal" :movimiento="movimientoActual" @update:visible="showModal = $event" />
-                        </td>
-                        <td><button @click="abrirEditar(movimiento)">Editar</button>
-                            <EditModal :visible="showEdit" :movimiento="movimientoActual" @update:visible="showEdit = $event" @edit-move="editMove"/>
-                        </td>
+                        <td><button @click="abrirModal(movimiento)" >mas info</button></td>
+                        <td><button @click="abrirEditar({...movimiento})">Editar</button></td>
                         <td><button @click="Eliminar(movimiento._id)">Eliminar</button></td>
                     </tr>
+                    <InfoModal v-if="showModal" :visible="showModal" :movimiento="movimientoActual" @update:visible="showModal = $event" />
+                    <EditModal v-if="showEdit" :visible="showEdit" :movimiento="movimientoEdit" @update:visible="showEdit = $event" @edit-move="editMove"/>
                 </tbody>
             </table>
             <p v-else>no se registran movimientos anteriores</p>
@@ -58,6 +56,16 @@
     let showEdit = ref(false)
 
     const movimientoActual = ref({
+        _id: '',
+        crypto_code: '',
+        crypto_amount: '',
+        money: '',
+        user_id: '',
+        action: '',
+        datetime: ''
+    })
+
+    const movimientoEdit= ref({
         _id: '',
         crypto_code: '',
         crypto_amount: '',
@@ -98,11 +106,12 @@
 
     const abrirModal = (movimiento) => {
       movimientoActual.value = {...movimiento}
+      movimientoActual.value.datetime = formatearFecha(movimiento.datetime)
       showModal.value = true
     }
 
     const abrirEditar = (movimiento) => {
-        movimientoActual.value = {...movimiento}
+        movimientoEdit.value = {...movimiento}
         showEdit.value = true
     }
 

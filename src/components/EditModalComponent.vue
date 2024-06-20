@@ -2,19 +2,48 @@
     <div v-if="visible" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <h2>{{ Movimiento._id }}</h2>
-        <p>Tipo de Transaccion: <input type="text" v-model="Movimiento.action"></p>
-        <p>CriptoMoneda: <input type="text" v-model="Movimiento.crypto_code"></p>
-        <p>cantidad: <input type="text" v-model="Movimiento.crypto_amount"></p>
-        <p>total: $<input type="text" v-model="Movimiento.money"></p>
-        <p>fecha: {{Movimiento.datetime}}</p>
-        <button id="botonEditar" @click="editar">Editar</button>
-        <button id="botonCerrar" @click="closeModal">Cancelar</button>
+        <div>
+          <label for="accion">Tipo de Transaccion:</label>
+          <select id="accion" v-model="Movimiento.action">
+            <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="Moneda">CriptoMoneda:</label>
+          <select id="Moneda" v-model="Movimiento.crypto_code">
+            <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="Cantidad">Cantidad</label>
+          <input type="number" id="Cantidad" v-model="Movimiento.crypto_amount">
+        </div>
+        <div>
+          <p>total ar$ {{ Movimiento.money }}</p>
+        </div>
+        <div>
+          <p>total: $<input type="text" v-model="Movimiento.money"></p>
+        </div>
+        <div>
+          <p>fecha: {{Movimiento.datetime}}</p>
+        </div>
+        <div>
+          <button id="botonEditar" @click="editar">Editar</button>
+        </div>
+        <div>
+          <button id="botonCerrar" @click="closeModal">Cancelar</button>
+        </div>
       </div>
     </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits,ref } from 'vue'
+import { defineProps, defineEmits, ref, watch } from 'vue'
+import GestionService from '@/Services/GestionService';
+import TransactionsService from '@/Services/TransaccionesService';
+
+  const TransactionsS = new TransactionsService()
+  const GestionS = new GestionService()
   const props = defineProps({
     visible: {
       type: Boolean,
@@ -28,23 +57,63 @@ import { defineProps, defineEmits,ref } from 'vue'
 
   let Movimiento = ref({
     _id: props.movimiento._id,
-    action: props.movimiento.action,
     crypto_code: props.movimiento.crypto_code,
     crypto_amount: props.movimiento.crypto_amount,
     money: props.movimiento.money,
+    user_id: props.movimiento.user_id,
+    action: props.movimiento.action,
     datetime: props.movimiento.datetime
   })
-  
+
   const emitEvent = defineEmits(['update:visible', 'editMove'])
 
-  const editar = () => {
-    emitEvent('edit-move', {...Movimiento.value})
-    closeModal()
+  const editar = async () => {
+    let ok = false
+    if(typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0){
+      if (Movimiento.value.action === 'purchase') {
+        ok = true
+      }else{
+        const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === Movimiento.value.crypto_code)
+        if(Movimiento.value.crypto_amount <= moneda.balance){
+          ok = true
+        }else{
+          console.log("el monto debe ser menor a la exitencia")
+        }
+      } 
+    }else{
+      //hacer cartel de llenar todo bien(hablar css)
+      console.log("llena bien todo daleeee" )
+    }
+
+    if(ok){
+      emitEvent('edit-move', {...Movimiento.value})
+      closeModal()
+    }else{
+      console.log("los datos para modificar deben ser validos" )
+    }
+
+  }
+
+  const updateTotal = async () => {
+    console.log("props")
+    console.log(props.movimiento)
+    if (typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0) {
+      const Cotizacion = await GestionS.getCotizacion(Movimiento.value.crypto_code);
+      if (Movimiento.value.action === 'purchase') {
+        Movimiento.value.money = Cotizacion.totalAsk * Movimiento.value.crypto_amount;
+      } else {
+        Movimiento.value.money = Cotizacion.totalBid * Movimiento.value.crypto_amount;
+      }
+    } else {
+      Movimiento.value.money = 0;
+    }
   }
   
   const closeModal = () => {
     emitEvent('update:visible', false)
   }
+
+  watch(Movimiento.value, updateTotal)
 </script>
 
 <style scoped>
@@ -58,6 +127,11 @@ import { defineProps, defineEmits,ref } from 'vue'
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  input, select {
+    color: #000000;
+    background-color: rgba(161, 69, 69, 0.767);
   }
   
   .modal-content {
