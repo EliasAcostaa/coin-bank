@@ -7,6 +7,11 @@ export const useUserStore = defineStore('User',{
             userName: '',
         }
     },
+    getters: {
+        usuario(state) {
+            return state.userName
+          }
+    },
     actions: {
         loguear(name){
             this.userName = name

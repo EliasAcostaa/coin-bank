@@ -29,6 +29,7 @@
                 <label for="Hora">Hora</label>
                 <input type="time" id="Hora" v-model="date.hora">
             </div>
+            <p>{{ operacion.datetime }}</p>
         </form>
         <div>
             <button @click="realizarMovimiento">{{ opp.nombre }}</button>
@@ -59,13 +60,14 @@
     const realizarMovimiento = async () => {
         if(typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0){
             let resultado = ''
+            console.log(operacion.value)
             if (operacion.value.action === 'purchase') {
                 resultado = await TransactionsS.postMovimiento({...operacion.value})
                 console.log("estatus " + resultado)
                     //hacer cartel de como salio la accion(hablar css)
             }else{
                 await TransactionsS.fetchTransactions()
-                const moneda = await TransactionsS.getEstadoCuenta().find(coin => coin.codigo === operacion.value.crypto_code)
+                const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === operacion.value.crypto_code)
                 if(operacion.value.crypto_amount <= moneda.balance){
                     resultado = await TransactionsS.postMovimiento({...operacion.value})
                     console.log("estatus " + resultado)

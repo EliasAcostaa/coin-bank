@@ -20,7 +20,7 @@
                         <td>{{ movimiento.crypto_code }}</td>
                         <td>{{ movimiento.crypto_amount }}</td>
                         <td>${{ movimiento.money }}</td>
-                        <td>{{ formatDate(movimiento.datetime) }}</td>
+                        <td>{{ formatearFecha(movimiento.datetime) }}</td>
                         <td><button @click="abrirModal(movimiento)" >mas info</button>
                             <InfoModal :visible="showModal" :movimiento="movimientoActual" @update:visible="showModal = $event" />
                         </td>
@@ -59,10 +59,11 @@
 
     const movimientoActual = ref({
         _id: '',
-        action: '',
         crypto_code: '',
         crypto_amount: '',
         money: '',
+        user_id: '',
+        action: '',
         datetime: ''
     })
 
@@ -97,7 +98,6 @@
 
     const abrirModal = (movimiento) => {
       movimientoActual.value = {...movimiento}
-      movimientoActual.value.datetime = formatDate(movimiento.datetime)
       showModal.value = true
     }
 
@@ -111,9 +111,15 @@
         await recargar()
     }
 
-    function formatDate(dateTimeString) {
-        const dateObject = new Date(dateTimeString);
-        const formattedDate = dateObject.toLocaleDateString() + ' ' + dateObject.toLocaleTimeString();
-        return formattedDate;
+    const formatearFecha = (fechaISO) =>{
+      const fecha = new Date(fechaISO);
+
+      const opciones = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+      const formato = new Intl.DateTimeFormat('es-ES', opciones);
+      const fechaFormateada = formato.format(fecha);
+
+      return fechaFormateada + "hs";
     }
+
+    
 </script>
