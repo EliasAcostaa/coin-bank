@@ -22,10 +22,7 @@
           <p>total ar$ {{ Movimiento.money }}</p>
         </div>
         <div>
-          <p>total: $<input type="text" v-model="Movimiento.money"></p>
-        </div>
-        <div>
-          <p>fecha: {{Movimiento.datetime}}</p>
+          <p>fecha: {{ formatearFecha(Movimiento.datetime) }}</p>
         </div>
         <div>
           <button id="botonEditar" @click="editar">Editar</button>
@@ -95,8 +92,6 @@ import TransactionsService from '@/Services/TransaccionesService';
   }
 
   const updateTotal = async () => {
-    console.log("props")
-    console.log(props.movimiento)
     if (typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0) {
       const Cotizacion = await GestionS.getCotizacion(Movimiento.value.crypto_code);
       if (Movimiento.value.action === 'purchase') {
@@ -107,6 +102,16 @@ import TransactionsService from '@/Services/TransaccionesService';
     } else {
       Movimiento.value.money = 0;
     }
+  }
+
+  const formatearFecha = (fechaISO) =>{
+    const fecha = new Date(fechaISO);
+
+    const opciones = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+    const formato = new Intl.DateTimeFormat('es-ES', opciones);
+    const fechaFormateada = formato.format(fecha);
+
+    return fechaFormateada + "hs";
   }
   
   const closeModal = () => {
