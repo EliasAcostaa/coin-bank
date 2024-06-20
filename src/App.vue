@@ -1,6 +1,9 @@
 <template>
   <div v-if="store.isLogged">
-    <NavBar/>
+    <nav>
+      <router-link :to="{name: 'HomeView'}">home</router-link>
+      <router-link :to="{name: 'VenderView'}">vender</router-link>
+    </nav>
     <router-view/>
   </div>
   <div v-else>
@@ -11,7 +14,6 @@
 
 <script setup>
   import { useUserStore } from './store/User';
-  import NavBar from './components/NavBarComponent.vue'
   const store = useUserStore();
 </script>
 

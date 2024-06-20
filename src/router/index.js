@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import HomeView from '../views/HomeView.vue'
-import OperarView from '../views/OperarView.vue'
-import HistorialView from '../views/HistorialView.vue'
+import VenderView from '../views/VenderView.vue'
 
 const routes = [
   {
@@ -16,14 +15,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/Operar',
-    name: 'OperarView',
-    component: OperarView
-  },
-  {
-    path: '/Historial',
-    name: 'HistorialView',
-    component: HistorialView
+    path: '/Vender',
+    name: 'VenderView',
+    component: VenderView
   }
 ]
 

@@ -1,10 +1,9 @@
 <template>
-    <div>
-        <h1>logueado</h1>
+    <div v-if="tore.isLogged">
+        <h1>vender</h1>
         <h3>{{ store.userName }}</h3>
         <h3>{{ store.isLogged }}</h3>
     </div>
-    
 </template>
 
 <script setup>
