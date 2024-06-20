@@ -65,13 +65,20 @@
                     //hacer cartel de como salio la accion(hablar css)
             }else{
                 await TransactionsS.fetchTransactions()
-                const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === operacion.value.crypto_code)
-                if(operacion.value.crypto_amount <= moneda.balance){
-                    resultado = await TransactionsS.postMovimiento({...operacion.value})
-                    console.log("estatus " + resultado)
-                    //hacer cartel de como salio la accion(hablar css)
+                if(TransactionsS.getEstadoCuenta().length > 0 ){
+                    const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === operacion.value.crypto_code)
+                    if(moneda){
+                        if(operacion.value.crypto_amount <= moneda.balance){
+                            resultado = await TransactionsS.postMovimiento({...operacion.value})
+                            console.log("estatus " + resultado)
+                            //hacer cartel de como salio la accion(hablar css)
+                        }else{
+                            console.log("el monto debe ser menor a la exitencia")
+                        }
+                    }
                 }else{
-                    console.log("el monto debe ser menor a la exitencia")
+                    //hacer cartel de que se necesita tener de esa moneda para poder vender(hablar css)
+                    console.log("primero debe comprar")
                 }
             } 
         }else{

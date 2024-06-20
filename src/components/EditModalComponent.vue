@@ -71,10 +71,12 @@ import TransactionsService from '@/Services/TransaccionesService';
         ok = true
       }else{
         const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === Movimiento.value.crypto_code)
-        if(Movimiento.value.crypto_amount <= moneda.balance){
-          ok = true
-        }else{
-          console.log("el monto debe ser menor a la exitencia")
+        if(moneda){
+          if(Movimiento.value.crypto_amount <= moneda.balance){
+            ok = true
+          }else{
+            console.log("el monto debe ser menor a la exitencia")
+          }
         }
       } 
     }else{
