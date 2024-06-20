@@ -5,7 +5,7 @@
         <h3>{{ store.isLogged }}</h3>
     </div>
     <div v-else>
-        <h3>para poder visualizar los movimientos usted debe iniciar sesion</h3>
+        <h3>para poder visualizar la pagina usted debe iniciar sesion</h3>
         <button @click="Login()">Iniciar Sesion</button>
     </div>
     
