@@ -31,7 +31,7 @@
     intento.value = true;
     if (validName.value) {
       store.loguear(nombre.value); 
-      route.push('/HomeView');
+      route.push({name: 'HomeView'});
       intento.value = false;
     }
   };

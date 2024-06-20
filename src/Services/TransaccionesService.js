@@ -20,7 +20,7 @@ class TransactionsService{
         let total = 0
         let anterior = ''
         let actual = ''
-        for (const transaction of this.movimientos.value){
+        for (const transaction of this.movimientos.value.sort((a, b) => a.crypto_code.localeCompare(b.crypto_code))){
             const moneda = GestionS.getMonedas().find(moneda => moneda.codigo === transaction.crypto_code);
             if (moneda) {
                 if(anterior === '' && actual === ''){

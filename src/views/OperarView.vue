@@ -33,7 +33,6 @@
         <div>
             <button @click="realizarMovimiento">{{ opp.nombre }}</button>
         </div>
-      <p>{{ operacion.datetime }}</p>
 
     </div>
     <div v-else>
@@ -66,7 +65,7 @@
                     //hacer cartel de como salio la accion(hablar css)
             }else{
                 await TransactionsS.fetchTransactions()
-                const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === operacion.value.crypto_code)
+                const moneda = await TransactionsS.getEstadoCuenta().find(coin => coin.codigo === operacion.value.crypto_code)
                 if(operacion.value.crypto_amount <= moneda.balance){
                     resultado = await TransactionsS.postMovimiento({...operacion.value})
                     console.log("estatus " + resultado)

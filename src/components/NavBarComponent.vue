@@ -4,6 +4,7 @@
             <router-link :to="{name: 'HomeView'}">home</router-link>
             <router-link :to="{name: 'OperarView'}">Operar</router-link>
             <router-link :to="{name: 'HistorialView'}">Historial</router-link>
+            <router-link :to="{name: 'EstadoActualView'}">Cuentas</router-link>
             <button type="button" @click="logOut()">Cerrar Sesion</button>
         </nav>
     </div>
