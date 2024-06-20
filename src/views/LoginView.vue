@@ -1,15 +1,22 @@
 <template>
   <div>
-    <h3>Registrese</h3>
+    <h3>¡Bienvenido a nuestra billetera virtual!</h3>
     <form>
-      <label for="Usuario">Ingrese su nombre de Usuario</label>
+      <label for="Usuario">Ingrese un nombre de usuario: </label>
       <input type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
     </form>
-    <p v-if="!validName && intento">Introduce una combinacion de al menos seis numeros, letras y signos de puntuacion(como ! y ?), no debe incluir espacios</p>
-    <button type="button" @click="ingresar()">ingresar</button>
+    <p v-if="!validName && intento">Introduzca una contraseña de al menos seis caracteres.
+      <ul>
+        <li>Debe contener números.</li>
+        <li>Debe contener letras.</li>
+        <li>Debe contener signos de puntuación (tales como "!", "?").</li>
+        <li>No puede incluir espacios.</li>
+      </ul>
+    </p>
+    <button type="button" @click="ingresar()">Ingresar</button>
   </div>
 </template>
-
+                    <!-- MODIFICAR USUARIO EXPERIENCIA PALABRAS --> 
 <script setup>
   import { useUserStore } from '../store/User';
   import { useRouter } from 'vue-router';

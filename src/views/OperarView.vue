@@ -1,32 +1,32 @@
 <template>
     <div v-if="store.isLogged">
-        <h3>Operar</h3>
+        <h3>Opere y genere movimientos dentro de su cartera</h3>
         <form>
             <div>
-                <label for="TipoOperacion">Seleccione el tipo de operacion</label>
+                <label for="TipoOperacion">Seleccione el tipo de operacion </label>
                 <select id="TipoOperacion" v-model="operacion.action">
                     <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
                 </select>
             </div>
             <div>
-                <label for="Moneda">Seleccione una Moneda</label>
+                <label for="Moneda">Seleccione una moneda </label>
                 <select id="Moneda" v-model="operacion.crypto_code">
                     <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                 </select>
             </div>
             <div>
-                <label for="Cantidad">Cantidad</label>
+                <label for="Cantidad">Cantidad </label>
                 <input type="number" id="Cantidad" v-model="operacion.crypto_amount">
             </div>
             <div>
-                <p>total ar$ {{ operacion.money }}</p>
+                <p>Total ar$ {{ operacion.money }}</p>
             </div>
             <div>
-                <label for="Fecha">Fecha</label>
+                <label for="Fecha">Fecha </label>
                 <input type="date" id="Fecha" v-model="date.fecha" :max="todayString">
             </div>
             <div>
-                <label for="Hora">Hora</label>
+                <label for="Hora">Hora </label>
                 <input type="time" id="Hora" v-model="date.hora">
             </div>
         </form>
@@ -35,8 +35,8 @@
         </div>
     </div>
     <div v-else>
-      <h3>para poder Vender y Comprar usted debe iniciar sesion</h3>
-      <button @click="Login">Iniciar Sesion</button>
+      <h3>Para poder vender y comprar en nuestra página... ¡Debe iniciar sesión!</h3>
+      <button @click="Login">Iniciar Sesión</button>
     </div>
   </template>
   

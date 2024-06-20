@@ -5,12 +5,12 @@
             <table v-if="movimientos.length !== 0">
                 <thead>
                     <tr>
-                        <th>numero de movimiento</th>
-                        <th>tipo de movimiento</th>
+                        <th>Número de movimiento</th>
+                        <th>Tipo de movimiento</th>
                         <th>CriptoMoneda</th>
                         <th>Cantidad</th>
                         <th>Total</th>
-                        <th>fecha y hora</th>
+                        <th>Fecha y Hora</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,15 +29,15 @@
                     <EditModal v-if="showEdit" :visible="showEdit" :movimiento="movimientoActual" @update:visible="showEdit = $event" @edit-move="editMove"/>
                 </tbody>
             </table>
-            <p v-else>no se registran movimientos anteriores</p>
+            <p v-else>No se registran movimientos anteriores.</p>
         </div>
         <div v-else>
-            <p>cargando historial</p>
+            <p>Cargando historial, estamos trabajando...</p>
         </div>
     </div>
     <div v-else>
-        <h3>para poder visualizar los movimientos usted debe iniciar sesion</h3>
-        <button @click="Login()">Iniciar Sesion</button>
+        <h3>Para poder visualizar los movimientos... ¡Debe iniciar sesión!</h3>
+        <button @click="Login()">Iniciar Sesión</button>
     </div>
     
 </template>

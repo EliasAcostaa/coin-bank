@@ -1,6 +1,6 @@
 <template>
     <div v-if="store.isLogged">
-        <h3>Estado Actual</h3>
+        <h3>Estado actual</h3>
         <div v-if="!cargando">
             <div v-if="balances.length !== 0">
                 <table>
@@ -19,19 +19,19 @@
                         </tr>
                     </tbody>
                 </table>
-                <p> total de dinero en cuenta: ${{ totalFinal }}</p>
+                <p> Total de dinero en cuenta: ${{ totalFinal }}</p>
             </div>
             <div v-else>
-                <p>la cuenta está vacia</p>
+                <p>¡La cuenta se encuentra vacía!</p>
             </div>
         </div>
         <div v-else>
-            <p>cargando Balance</p>
+            <p>Cargando balance, estamos trabajando...</p>
         </div>
     </div>
     <div v-else>
-        <h3>para poder visualizar los balances usted debe iniciar sesion</h3>
-        <button @click="Login()">Iniciar Sesion</button>
+        <h3>Para poder visualizar los balances... ¡Debe iniciar sesión!</h3>
+        <button @click="Login()">Iniciar Sesión</button>
     </div>
     
 </template>
