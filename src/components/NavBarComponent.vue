@@ -17,7 +17,7 @@
                         </li>
                         <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
                             <router-link :to="{name: 'OperarView'}"
-                                class="nav-link">Operar</router-link>
+                            class="nav-link">Operar</router-link>
                         </li>
                         <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
                             <router-link :to="{name: 'HistorialView'}"
@@ -28,23 +28,15 @@
                             class="nav-link">Cuentas</router-link>
                         </li>
                     </ul>
-
-                <form class="d-flex">
-                    <input class="form-control me-2" type="filtrar" placeholder="Búsqueda particular" aria-label="Filtrar">
-                    <button class="btn btn-outline-success" type="submit">Filtrar</button>
-                </form>
-                
-                <ul>
-                    <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
+                    <ul>
+                        <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
                             <a class="nav-link active" aria-current="page" href="#"><button type="button" @click="logOut()">Cerrar Sesión</button></a>
-                    </li>
-                </ul>
-
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
         </nav>
     </div>
-
 </nav>
 </template>
 
