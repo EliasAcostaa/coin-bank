@@ -16,7 +16,7 @@
             </div>
             <div>
                 <label for="Cantidad">Cantidad </label>
-                <input type="number" id="Cantidad" v-model="operacion.crypto_amount">
+                <input type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
             </div>
             <div>
                 <p>Total ar$ {{ operacion.money }}</p>
@@ -87,6 +87,10 @@
         }
     }
 
+    const minimo = () => {
+        return operacion.value.crypto_amount.toFixed(6)
+    }
+
     const opp = computed(() => {
         return GestionS.getOperaciones().find(operation => operation.opcion === operacion.value.action)
     })
@@ -114,11 +118,12 @@
   
     const updateTotal = async () => {
         if (typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0) {
+            operacion.value.crypto_amount = parseFloat(minimo())
             const Cotizacion = await GestionS.getCotizacion(operacion.value.crypto_code);
             if (operacion.value.action === 'purchase') {
-                operacion.value.money = Cotizacion.totalAsk * operacion.value.crypto_amount;
+                operacion.value.money = (Cotizacion.totalAsk * operacion.value.crypto_amount).toFixed(2);
             } else {
-                operacion.value.money = Cotizacion.totalBid * operacion.value.crypto_amount;
+                operacion.value.money = (Cotizacion.totalBid * operacion.value.crypto_amount).toFixed(2);
             }
         } else {
             operacion.value.money = 0;
