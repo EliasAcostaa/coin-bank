@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>¡Bienvenido a nuestra billetera virtual!</h3>
+    <h3>¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
     <form>
       <label for="Usuario">Ingrese un nombre de usuario: </label>
       <input type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
