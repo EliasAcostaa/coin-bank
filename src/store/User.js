@@ -4,13 +4,13 @@ export const useUserStore = defineStore('User',{
     state: () => {
         return {
             isLogged: false,
-            userName: '',
+            userName: ''
         }
     },
     getters: {
         usuario(state) {
             return state.userName
-          }
+        }
     },
     actions: {
         loguear(name){
