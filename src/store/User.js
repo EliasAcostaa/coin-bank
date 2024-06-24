@@ -4,12 +4,16 @@ export const useUserStore = defineStore('User',{
     state: () => {
         return {
             isLogged: false,
-            userName: ''
+            userName: '',
+            exchangeAct: 'argenbtc'
         }
     },
     getters: {
         usuario(state) {
             return state.userName
+        },
+        exchange(state){
+            return state.exchangeAct
         }
     },
     actions: {
@@ -20,6 +24,9 @@ export const useUserStore = defineStore('User',{
         desloguear(){
             this.userName = ''
             this.isLogged = false;
+        },
+        setExchange(exchange){
+            this.exchangeAct = exchange;
         }
     } 
 })

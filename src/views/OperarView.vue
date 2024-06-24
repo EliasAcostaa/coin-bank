@@ -1,6 +1,7 @@
 <template>
     <div v-if="store.isLogged">
         <h3>Opere y genere movimientos dentro de su cartera</h3>
+        <h3>exchange actual {{ store.exchange }}</h3>
         <form>
             <div>
                 <label for="TipoOperacion">Seleccione el tipo de operacion </label>
@@ -58,7 +59,6 @@
     const realizarMovimiento = async () => {
         if(typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0){
             let resultado = ''
-            console.log(operacion.value)
             if (operacion.value.action === 'purchase') {
                 resultado = await TransactionsS.postMovimiento({...operacion.value})
                 console.log("estatus " + resultado)

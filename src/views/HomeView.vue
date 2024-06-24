@@ -27,7 +27,7 @@
                             <td>{{ exchange.nombre }}</td>
                             <td>${{ exchange.precioCompra }}</td>
                             <td>${{ exchange.precioVenta}}</td>
-                            <button @click="actExchange(exchange.codigo)">Seleccionar exchange</button>
+                            <button @click="actExchange(exchange.codigo)">Usar</button>
                         </tr>
                     </tbody>
                 </table>
@@ -52,34 +52,32 @@
 
     const cargando = ref(false);
     const precios = ref([])
-    const exchange = ref((GestionS.getExchanges().find(exc => exc.codigo === GestionS.getExchangeAct())).nombre)
+    const exchange = ref((GestionS.getExchanges().find(exc => exc.codigo === store.exchange)).nombre)
     const eleccion = ref({
         moneda: 'btc'
     })
 
     const actPrecios = async () => {
-        console.log("consulta")
-        const actual = GestionS.getExchangeAct()
+        const actual = store.exchange
         precios.value.length = 0
         try{
             cargando.value = true
             for(const exchange of GestionS.getExchanges().filter(exc => exc.coins.includes(eleccion.value.moneda))){
-                GestionS.setExchangeAct(exchange.codigo)
+                store.setExchange(exchange.codigo)
                 const cotizacion = await GestionS.getCotizacion(eleccion.value.moneda)
                 precios.value.push({nombre: exchange.nombre, codigo: exchange.codigo, precioCompra: cotizacion.totalAsk, precioVenta: cotizacion.totalBid})
             }
         }catch(error){
             console.log(error)
         }finally{
-            GestionS.setExchangeAct(actual)
+            store.setExchange(actual)
             cargando.value = false
         }
     }
 
     const actExchange = (codigo) => {
-        GestionS.setExchangeAct(codigo)
-        console.log(GestionS.getExchangeAct())
-        exchange.value = (GestionS.getExchanges().find(exc => exc.codigo === GestionS.getExchangeAct())).nombre
+        store.setExchange(codigo)
+        exchange.value = (GestionS.getExchanges().find(exc => exc.codigo === store.exchange)).nombre
     }
 
     onMounted(() =>{

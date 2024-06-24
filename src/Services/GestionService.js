@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useUserStore } from "@/store/User";
 
 
 class GestionService{
@@ -8,17 +9,12 @@ class GestionService{
         {nombre: 'ArgenBTC', codigo: 'argenbtc', coins : ['btc', 'dai', 'eth', 'usdt', 'wld']},
         {nombre: 'belo', codigo: 'belo', coins : ['btc', 'dai', 'eth', 'usdt', 'usdc']}
     ]
-    ExchangeAct = 'argenbtc'
 
     constructor(){
     }
 
     getMonedas(){
         return this.Monedas
-    }
-
-    getExchangeAct(){
-        return this.ExchangeAct
     }
 
     getExchanges(){
@@ -36,13 +32,10 @@ class GestionService{
         })
     }
 
-    setExchangeAct(exchange){
-        this.ExchangeAct = exchange
-    }
-
     async getCotizacion(moneda){
+        const store = useUserStore();
         try{
-            const response = await axios.get(`https://criptoya.com/api/${this.ExchangeAct}/${moneda}/ars`);
+            const response = await axios.get(`https://criptoya.com/api/${store.exchange}/${moneda}/ars`);
             return response.data
         }catch(error){
             console.log(error)
