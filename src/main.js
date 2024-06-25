@@ -9,6 +9,7 @@ import '@/assets/bootstrap.min.css' // linkeo bootstrap de js
 // Import Bootstrap and BootstrapVue CSS files (order is important)    <---- este SÍ funciona!!! (bootstrap para VUE)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/assets/custom.code.css' // importamos el archivo de estilos propios (no predeterminados de bootstrap)
 
                                                 // BOOTSTRAP COMUN != BOOTSTRAP PARA VUE
 const pinia = createPinia()

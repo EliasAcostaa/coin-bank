@@ -1,13 +1,13 @@
 <template>
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light"> <!-- clase mayor que da diseño de bootstrap a barra-->
+<nav class="navbar navbar-expand-lg navbar-white" style="background-color: black"> <!-- clase mayor que da diseño de bootstrap a barra-->
     
     <div class="container justify-content-evenly"> 
             
         <div id="navbar"> <!-- clase eli de barra -->   
             <router-link :to="{name: 'LoginView'}"></router-link>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav">
                 <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
                     <router-link :to="{name: 'HomeView'}"
                     class="nav-link">Home</router-link>
@@ -46,3 +46,19 @@
         router.push({name: 'LoginView'})
     }
 </script>
+
+
+
+<style scoped>
+.nav-link {
+    color: white;
+    font-size: 1.5rem;
+    margin: 1.3rem;
+}
+
+.navbar {
+    padding-top: 0.2rem;
+    padding-bottom: 0.5rem;
+}
+
+</style>
