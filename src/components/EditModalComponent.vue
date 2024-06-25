@@ -70,12 +70,14 @@ import TransactionsService from '@/Services/TransaccionesService';
       if (Movimiento.value.action === 'purchase') {
         ok = true
       }else{
-        const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === Movimiento.value.crypto_code)
-        if(moneda){
-          if(Movimiento.value.crypto_amount <= moneda.balance){
-            ok = true
-          }else{
-            console.log("el monto debe ser menor a la exitencia")
+        if(TransactionsS.getEstadoCuenta().length > 0 ){
+          const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === Movimiento.value.crypto_code)
+          if(moneda){
+            if(Movimiento.value.crypto_amount <= moneda.balance){
+              ok = true
+            }else{
+              console.log("el monto debe ser menor a la exitencia")
+            }
           }
         }
       } 
@@ -93,13 +95,18 @@ import TransactionsService from '@/Services/TransaccionesService';
 
   }
 
+  const minimo = () => {
+        return Movimiento.value.crypto_amount.toFixed(6)
+  }
+
   const updateTotal = async () => {
     if (typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0) {
+      Movimiento.value.crypto_amount = parseFloat(minimo())
       const Cotizacion = await GestionS.getCotizacion(Movimiento.value.crypto_code);
       if (Movimiento.value.action === 'purchase') {
-        Movimiento.value.money = Cotizacion.totalAsk * Movimiento.value.crypto_amount;
+        Movimiento.value.money = (Cotizacion.totalAsk * Movimiento.value.crypto_amount).toFixed(2);
       } else {
-        Movimiento.value.money = Cotizacion.totalBid * Movimiento.value.crypto_amount;
+        Movimiento.value.money = (Cotizacion.totalBid * Movimiento.value.crypto_amount).toFixed(2);
       }
     } else {
       Movimiento.value.money = 0;

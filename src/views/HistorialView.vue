@@ -88,7 +88,7 @@
     }
 
     const Eliminar = async (id) => {
-        TransactionsS.deleteMovimiento(id)
+        await TransactionsS.deleteMovimiento(id)
         await recargar()
     }
 
@@ -108,7 +108,7 @@
     }
 
     const editMove = async (movimientoE) => {
-        TransactionsS.editMovimiento(movimientoE)
+        await TransactionsS.editMovimiento(movimientoE)
         await recargar()
     }
 
