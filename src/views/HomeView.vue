@@ -9,18 +9,18 @@
             </div>
             <div>
                 <h3>
-                    <select id="Moneda" v-model="eleccion.moneda">
+                    <select class="btn btn-outline-dark btn-lg d-grid gap-2 col-4 mx-auto" id="Moneda" v-model="eleccion.moneda">
                         <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                     </select>
                 </h3>
             </div>
-            <div id="lista-precios" v-if="!cargando">
-                <table >
+            <div class="d-flex justify-content-center" id="lista-precios" v-if="!cargando">
+                <table>
                     <thead>
-                        <tr>
-                            <th>Exchange</th>
-                            <th>Compras a</th>
-                            <th>Vendes a</th>
+                        <tr class="tr">
+                            <th class="exchange">Exchange</th>
+                            <th class="compras">Compras a</th>
+                            <th class="vendes">Vendes a</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,8 +100,33 @@
 
 <style scoped>
 
+h3 {
+    padding: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 h1 {
     padding: 1rem;
+}
+
+#lista-precios {
+    padding: 10rem;  /* terminar */
+}
+
+#Moneda {
+    margin-top: 2rem;
+}
+
+.exchange {
+    padding: 3rem;
+}
+
+.compras {
+    padding: 3rem;
+}
+
+.vendes {
+    padding: 3rem;
 }
 
 </style>
