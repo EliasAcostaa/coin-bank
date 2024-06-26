@@ -12,6 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/assets/custom.code.css' // importamos el archivo de estilos propios (no predeterminados de bootstrap)
 
                                                 // BOOTSTRAP COMUN != BOOTSTRAP PARA VUE
+
 const pinia = createPinia()
 
 createApp(App).use(store).use(pinia).use(router).mount('#app')

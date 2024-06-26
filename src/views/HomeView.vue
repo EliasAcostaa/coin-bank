@@ -1,8 +1,8 @@
 <template>
     <div class="container"> <!-- clase container para aplicar bootstrap-->
     <div v-if="store.isLogged">
-        <h1>Bienvenido {{ store.userName }}</h1>
-        <div class="exchange">
+        <h1 class="text-center">Bienvenido {{ store.userName }}</h1>
+        <div class="text-center exchange">
             <div>
                 <h3>Puedes elegir el exchange que prefieras comparando precios en la moneda que quieras.</h3>
                 <h3>Exchange actual {{ exchange }}</h3>
@@ -95,3 +95,13 @@
     watch(eleccion.value, actPrecios)
 
 </script>
+
+
+
+<style scoped>
+
+h1 {
+    padding: 1rem;
+}
+
+</style>
