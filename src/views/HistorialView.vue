@@ -1,4 +1,5 @@
 <template>
+    <div class="container">
     <div v-if="store.isLogged">
         <h3>Historial de Movimientos</h3>
         <div v-if="!cargando">
@@ -39,7 +40,7 @@
         <h3>Para poder visualizar los movimientos... ¡Debe iniciar sesión!</h3>
         <button @click="Login()">Iniciar Sesión</button>
     </div>
-    
+    </div>
 </template>
 
 <script setup>

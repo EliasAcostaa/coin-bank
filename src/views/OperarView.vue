@@ -1,4 +1,5 @@
 <template>
+    <div class="container">
     <div v-if="store.isLogged">
         <h3>Opere y genere movimientos dentro de su cartera</h3>
         <h3>exchange actual {{ store.exchange }}</h3>
@@ -38,6 +39,7 @@
     <div v-else>
       <h3>Para poder vender y comprar en nuestra página... ¡Debe iniciar sesión!</h3>
       <button @click="Login">Iniciar Sesión</button>
+    </div>
     </div>
   </template>
   

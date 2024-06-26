@@ -1,22 +1,42 @@
 <template>
-  <div>
-    <h3>¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
-    <form>
-      <label for="Usuario">Ingrese un nombre de usuario: </label>
-      <input type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
-    </form>
-    <p v-if="!validName && intento">Introduzca una contraseña de al menos seis caracteres.
-      <ul>
-        <li>Debe contener números.</li>
-        <li>Debe contener letras.</li>
-        <li>Debe contener signos de puntuación (tales como "!", "?").</li>
-        <li>No puede incluir espacios.</li>
-      </ul>
-    </p>
-    <button type="button" @click="ingresar()">Ingresar</button>
+  <div class="home">
+  <div class="row">
+
+    <div class="col lg-6">
+      <div class="img-cont">
+      <img class="img-fluid" alt="logo" src="../assets/logo/COIN BANK.gif">
+      <h2>Realizá tus cambios. Acomodá tus ganancias.</h2>
+      </div>
+    </div>
+    
+    
+    <div class="col lg-6">
+      <h3>¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
+        <form>
+          <label for="Usuario">Ingrese un nombre de usuario: </label>
+          <input type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
+          <p v-if="!validName && intento">Introduzca una contraseña de al menos seis caracteres.
+            <ul>
+              <li>Debe contener números.</li>
+              <li>Debe contener letras.</li>
+              <li>Debe contener signos de puntuación (tales como "!", "?").</li>
+              <li>No puede incluir espacios.</li>
+            </ul>
+          </p>
+        </form>
+      <button type="button" @click="ingresar()">Ingresar</button>
+    </div>
+    
+
+  </div>
   </div>
 </template>
-                    <!-- MODIFICAR USUARIO EXPERIENCIA PALABRAS --> 
+                    
+
+
+
+
+
 <script setup>
   import { useUserStore } from '../store/User';
   import { useRouter } from 'vue-router';
@@ -43,3 +63,20 @@
     }
   };
 </script>
+
+
+
+
+
+<style scoped>
+
+img {
+  width: 21rem;
+}
+
+.home {
+  max-width: 850px;
+  margin: auto;
+}
+
+</style>

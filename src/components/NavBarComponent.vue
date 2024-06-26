@@ -4,10 +4,13 @@
     
     <div class="container justify-content-evenly"> 
             
-        <div id="navbar"> <!-- clase eli de barra -->   
+        <div class="row" id="navbar"> <!-- clase eli de barra -->   
             <router-link :to="{name: 'LoginView'}"></router-link>
 
-            <ul class="navbar-nav">
+            <ul class="navbar-nav"> <!-- ".img responsive" o "img-fluid" ?? -->
+                <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
+                    <img class=".img-responsive" alt="logo" mx-auto src="../assets/logo/COIN BANK.gif">
+                </li>
                 <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
                     <router-link :to="{name: 'HomeView'}"
                     class="nav-link">Home</router-link>
@@ -48,17 +51,20 @@
 </script>
 
 
-
 <style scoped>
 .nav-link {
     color: white;
     font-size: 1.5rem;
-    margin: 1.3rem;
+    margin: 3.5rem;
 }
 
 .navbar {
     padding-top: 0.2rem;
     padding-bottom: 0.5rem;
+}
+
+img {
+    width: 13rem;
 }
 
 </style>

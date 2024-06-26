@@ -1,4 +1,5 @@
 <template>
+    <div class="container"> <!-- clase container para aplicar bootstrap-->
     <div v-if="store.isLogged">
         <h1>Bienvenido {{ store.userName }}</h1>
         <div class="exchange">
@@ -37,6 +38,7 @@
             </div>
         </div>
     </div>
+</div>
     
 </template>
 
