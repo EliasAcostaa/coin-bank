@@ -30,10 +30,6 @@
             <p>Cargando balance, estamos trabajando...</p>
         </div>
     </div>
-    <div v-else>
-        <h3>Para poder visualizar los balances... ¡Debe iniciar sesión!</h3>
-        <button @click="Login()">Iniciar Sesión</button>
-    </div>
     </div>
 </template>
 
@@ -56,6 +52,9 @@
     
     onMounted(async () => {
         await recargar()
+        if (!store.isLogged) {
+            router.push({name: 'LoginView'})
+        } 
     })
 
     const recargar = async () => {
@@ -83,10 +82,6 @@
     const totalFinal = computed(() => {
         return totales
     })
-
-    const Login = () => {
-        router.push({name: 'LoginView'})
-    }
 
     const nombreMoneda = (codigo) => {
         return GestionS.getMonedas().find(moneda => moneda.codigo === codigo)

@@ -36,10 +36,6 @@
             <p>Cargando historial, estamos trabajando...</p>
         </div>
     </div>
-    <div v-else>
-        <h3>Para poder visualizar los movimientos... ¡Debe iniciar sesión!</h3>
-        <button @click="Login()">Iniciar Sesión</button>
-    </div>
     </div>
 </template>
 
@@ -73,6 +69,9 @@
     const GestionS = new GestionService()
     
     onMounted(async () => {
+        if (!store.isLogged) {
+            router.push({name: 'LoginView'})
+        } 
         await recargar()
     })
 
@@ -91,10 +90,6 @@
     const Eliminar = async (id) => {
         await TransactionsS.deleteMovimiento(id)
         await recargar()
-    }
-
-    const Login = () => {
-        router.push({name: 'LoginView'})
     }
 
     const abrirModal = (movimiento) => {
