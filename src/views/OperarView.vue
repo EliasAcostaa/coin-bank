@@ -6,22 +6,28 @@
             <form>
 
                 <div class="row mb-3">
+                    <div class="d-grid gap-2 d-md-block">
                     <label class="col-sm-4 col-form-label" for="TipoOperacion">Seleccione el tipo de operación </label>
                     <select class="btn btn-dark btn-md dropdown-toggle" id="TipoOperacion" v-model="operacion.action">
                         <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
                     </select>
+                    </div>
                 </div>
 
                 <div class="row mb-3">
+                    <div class="d-grid gap-2 d-md-block">
                     <label class="col-sm-4 col-form-label" for="Moneda">Seleccione una moneda </label>
                         <select class="btn btn-dark btn-md dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
                             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                         </select>
+                    </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="Cantidad">Cantidad </label>
-                    <input class="form-control" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
+                    <div class="d-grid gap-2 d-md-block">
+                        <label class="col-sm-4 col-form-label" for="Cantidad">Cantidad </label>
+                        <input class="btn btn-dark" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
+                    </div>
                 </div>
 
                 <div class="row mb-3">
@@ -29,24 +35,28 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="Fecha">Fecha </label>
-                    <input class="form-control btn btn-dark" type="date" id="Fecha" v-model="date.fecha" :max="todayString">
+                    <div class="d-grid gap-2 d-md-block">
+                        <label class="col-sm-4 col-form-label" for="Fecha">Fecha </label>
+                        <input class="btn btn-dark" type="date" id="Fecha" v-model="date.fecha" :max="todayString">
+                    </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label" for="Hora">Hora </label>
-                    <input class="form-control btn btn-dark" type="time" id="Hora" v-model="date.hora">
+                    <div class="d-grid gap-2 d-md-block">
+                        <label class="col-sm-4 col-form-label" for="Hora">Hora </label>
+                        <input class="btn btn-dark" type="time" id="Hora" v-model="date.hora">
+                    </div>
                 </div>
 
                 <div class="row">
-                    <aside class="table table-dark table-striped-lg text-center">
-                        <h3>Exchange actual {{ store.exchange }}</h3>
-                        <PreciosTable class=""></PreciosTable>
-                    </aside>
+                    <table class="text-center">
+                        <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
+                        <PreciosTable></PreciosTable>
+                    </table>
                 </div>
   
                 <div class="row mb-1">
-                    <button class="d-grid gap-2 col-3 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                    <button class="d-grid gap-2 col-5 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
                 </div>
 
             </form>
@@ -185,18 +195,26 @@
 button {
     padding: 1rem;
     margin-top: 4rem;
-    font-size: larger;
+    font-size: large;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .col-sm-4  {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 h3 {
     margin-top: 3rem;
 }
+
+.exchange {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* PreciosTable es un COMPONENTE, la modificacion se realiza dentro del componente, aca no funcionará. */
 
 
 </style>
