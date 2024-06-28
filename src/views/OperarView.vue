@@ -1,12 +1,13 @@
 <template>
     <div class="container">
     <div v-if="store.isLogged">
-        <h3>Opere y genere movimientos dentro de su cartera</h3>
-        <div id="formyprecio">
-            <div class="formulario">
+        <h3 class="text-center">¡Opere y genere movimientos dentro de su cartera!</h3>
+
+            <div class="">  <!-- estructurar contenido -->
                 <form>
+                    <div class="">
                     <div>
-                        <label for="TipoOperacion">Seleccione el tipo de operacion </label>
+                        <label for="TipoOperacion">Seleccione el tipo de operación </label>
                         <select id="TipoOperacion" v-model="operacion.action">
                             <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
                         </select>
@@ -32,23 +33,31 @@
                         <label for="Hora">Hora </label>
                         <input type="time" id="Hora" v-model="date.hora">
                     </div>
+                </div>
                 </form>
+                
             </div>
-            <div class="tablaPrecios">
+
+            <div class="">
                 <aside>
-                    <h3>exchange actual {{ store.exchange }}</h3>
+                    <h3>Exchange actual {{ store.exchange }}</h3>
                     <PreciosTable></PreciosTable>
                 </aside>
             </div>
-        </div>
         
-        <div>
-            <button @click="realizarMovimiento">{{ opp.nombre }}</button>
+            <div>
+                <button @click="realizarMovimiento">{{ opp.nombre }}</button>
+            </div>
+            
         </div>
+
     </div>
-    </div>
+
   </template>
   
+
+
+
   <script setup>
     import { useUserStore } from '@/store/User';
     import { useRouter } from 'vue-router';
@@ -156,11 +165,19 @@
     watch(date.value, updateFecha)
   
     watch(operacion.value, updateTotal);
+
   </script>
 
-<style>
-#formyprecio {
-    display: flex;
-    justify-content: space-between
-}
+
+
+
+<style scoped>
+
+
+
+
 </style>
+
+
+
+

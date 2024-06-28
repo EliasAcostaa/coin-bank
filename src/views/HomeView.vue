@@ -1,23 +1,26 @@
 <template>
     <div class="container"> <!-- clase container para aplicar bootstrap-->
     <div v-if="store.isLogged">
-        <h1 class="text-center">Bienvenido {{ store.userName }}</h1>
+        <h1 class="text-center">¡Bienvenido, {{ store.userName }}!</h1>
         <div class="text-center exchange">
             <div>
-                <h3>Puedes elegir el exchange que prefieras comparando precios en la moneda que quieras.</h3>
+                <h2>Elegí el exchange que prefieras.</h2>
+                <h2>Compará precios en la moneda que quieras.</h2>
                 <h3>Exchange actual {{ exchange }}</h3>
             </div>
             <div>
                 <h3>
-                    <select class="btn btn-outline-dark btn-lg d-grid gap-2 col-4 mx-auto" id="Moneda" v-model="eleccion.moneda">
+                    <select class="btn btn-outline-dark btn-lg d-grid gap-2 col-3.2 mx-auto" id="Moneda" v-model="eleccion.moneda">
                         <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                     </select>
                 </h3>
             </div>
+
             <div class="d-flex justify-content-center" id="lista-precios" v-if="!cargando">
-                <table>
+
+                <table class="table table-dark table-striped-lg">
                     <thead>
-                        <tr class="tr">
+                        <tr>
                             <th class="exchange">Exchange</th>
                             <th class="compras">Compras a</th>
                             <th class="vendes">Vendes a</th>
@@ -28,13 +31,13 @@
                             <td>{{ exchange.nombre }}</td>
                             <td>${{ exchange.precioCompra }}</td>
                             <td>${{ exchange.precioVenta}}</td>
-                            <button @click="actExchange(exchange.codigo)">Usar</button>
+                            <button class="p-2 bg-dark border btn btn-dark d-grid gap-2 col-12 mx-auto" @click="actExchange(exchange.codigo)">Usar</button>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div v-else>
-                <p>Cargando precios, estamos trabajando...</p>
+                <p class="fs-4">¡Cargando precios! Estamos trabajando...</p>
             </div>
         </div>
     </div>
@@ -101,32 +104,54 @@
 <style scoped>
 
 h3 {
-    padding: 1rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 3rem;
 }
 
 h1 {
-    padding: 1rem;
+    padding: 3rem;
 }
 
 #lista-precios {
-    padding: 10rem;  /* terminar */
+    padding: 3rem;  /* terminar */
 }
 
 #Moneda {
-    margin-top: 2rem;
+    margin-top: 1rem;      /* BOTON DE EXCHANGE */
+    margin-bottom: 1rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
 }
 
 .exchange {
-    padding: 3rem;
+    padding: 1rem;
+    font-size: 1.5rem;
 }
 
 .compras {
-    padding: 3rem;
+    padding: 1rem;
+    font-size: 1.5rem;
 }
 
 .vendes {
-    padding: 3rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+table {
+    margin-bottom: -4rem;
+    font-size: 1.2rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 4.5rem;
+}
+
+button {
+    font-size: 1.2rem;
+}
+
+tbody {
+    font-size: 1.2rem;
+    font-style: italic;
 }
 
 </style>
