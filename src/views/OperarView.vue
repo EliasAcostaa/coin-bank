@@ -3,54 +3,54 @@
         <h3 class="text-center">¡Opere y genere movimientos dentro de su cartera!</h3>
             
         <div class="container">
-            <form>
+            <form class="text-center">
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-md-block">
-                    <label class="col-sm-4 col-form-label" for="TipoOperacion">Seleccione el tipo de operación </label>
-                    <select class="btn btn-dark btn-md dropdown-toggle" id="TipoOperacion" v-model="operacion.action">
+                    <div class="d-grid gap-2 d-xxl-block">
+                    <label class="col-xxl-6 col-form-label" for="TipoOperacion">Seleccione el tipo de operación </label>
+                    <select class="btn btn-dark btn-lg dropdown-toggle" id="TipoOperacion" v-model="operacion.action">
                         <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
                     </select>
                     </div>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="d-grid gap-2 d-md-block">
-                    <label class="col-sm-4 col-form-label" for="Moneda">Seleccione una moneda </label>
-                        <select class="btn btn-dark btn-md dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
+                <div class="row mb-3">  
+                    <div class="d-grid gap-2 d-xxl-block">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
+                    <label class="col-xxl-5 col-form-label" for="Moneda">Seleccione una moneda </label>
+                        <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
                             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-md-block">
-                        <label class="col-sm-4 col-form-label" for="Cantidad">Cantidad </label>
-                        <input class="btn btn-dark" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
+                    <div class="d-grid gap-2 d-xxl-block">
+                        <label class="col-xxl-3 col-form-label" for="Cantidad">Cantidad </label>
+                        <input class="btn btn-dark btn-lg" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <p class="col-sm-4 col-form-label">Total ar$ {{ operacion.money }}</p>
+                    <p class="col-xxl-12 col-form-label text-center fs-3">Total ar$ {{ operacion.money }}</p>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-md-block">
-                        <label class="col-sm-4 col-form-label" for="Fecha">Fecha </label>
-                        <input class="btn btn-dark" type="date" id="Fecha" v-model="date.fecha" :max="todayString">
+                    <div class="d-grid gap-2 d-xxl-block">
+                        <label class="col-xxl-2 col-form-label" for="Fecha">Fecha </label>
+                        <input class="btn btn-dark btn-lg" type="date" id="Fecha" v-model="date.fecha" :max="todayString">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-md-block">
-                        <label class="col-sm-4 col-form-label" for="Hora">Hora </label>
-                        <input class="btn btn-dark" type="time" id="Hora" v-model="date.hora">
+                    <div class="d-grid gap-2 d-xxl-block">
+                        <label class="col-xxl-2 col-form-label" for="Hora">Hora </label>
+                        <input class="btn btn-dark btn-lg" type="time" id="Hora" v-model="date.hora">
                     </div>
                 </div>
 
                 <div class="row">
                     <table class="text-center">
-                        <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
+                        <h3 class="exchange text-center">Exchange actual {{ store.exchange }}</h3>
                         <PreciosTable></PreciosTable>
                     </table>
                 </div>
@@ -212,6 +212,10 @@ h3 {
     margin-top: 3rem;
     margin-bottom: 4rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+label {
+    font-size: 1.5rem;
 }
 
 /* PreciosTable es un COMPONENTE, la modificacion se realiza dentro del componente, aca no funcionará. */

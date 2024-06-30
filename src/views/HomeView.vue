@@ -123,16 +123,8 @@ h1 {
     font-size: 1.5rem;
 }
 
-.exchange {
-    padding: 1rem;
-    font-size: 1.5rem;
-}
-
-.compras {
-    padding: 1rem;
-    font-size: 1.5rem;
-}
-
+.exchange,
+.compras,
 .vendes {
     padding: 1rem;
     font-size: 1.5rem;

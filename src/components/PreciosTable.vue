@@ -1,12 +1,13 @@
 <template>
     <div class="container">
     <div class="precios table table-dark table-sm" v-if="!cargando">
-        <table class="position-relative bottom-0 start-50 translate-middle-x">
+        <div class="row">
+        <table class="col-2-xs">
             <thead>
                 <tr class="fs-4">
-                    <th>Moneda</th>
-                    <th>Precio compra</th>
-                    <th>Precio Venta</th>
+                    <th class="moneda">Moneda</th>
+                    <th class="compra">Precio compra</th>
+                    <th class="venta">Precio Venta</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,9 +18,10 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
     <div class="cargando fs-4" v-else>
-        <p class="text-center">¡Cargando Precios! Estamos trabajando...</p>  <!-- text-center no centra¿¿??-->
+        <p class="text-center">¡Cargando Precios! Estamos trabajando...</p>  
     </div>
     </div>
     
@@ -55,12 +57,18 @@
 <style>
 
 .cargando {
-    position: absolute;
+    position: relative;
 }
 
 table {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 30rem;
+    height: 12rem;
+}
+
+.moneda,
+.compra,
+.venta {
+    font-size: 1.7rem;
 }
 
 </style>
