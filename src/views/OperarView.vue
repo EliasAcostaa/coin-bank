@@ -48,9 +48,9 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <table class="text-center">
-                        <h3 class="exchange text-center">Exchange actual {{ store.exchange }}</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered-dark table-striped small">
+                        <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
                         <PreciosTable></PreciosTable>
                     </table>
                 </div>
@@ -185,9 +185,9 @@
 <style scoped>
 
 .container {
-    max-width: 900px;
+    max-width: 800px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
     margin: auto;
-    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) */
+    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
     font-size: 1.2rem;
 }
 

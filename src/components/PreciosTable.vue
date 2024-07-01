@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-    <div class="precios table table-dark table-sm" v-if="!cargando">
-        <div class="row">
-        <table class="col-2-xs">
+    <div class="lista-precios" v-if="!cargando"> <!-- le pongo ROW a tabla de HOME para alargarla?????¿¿¿-->
+        <div class="table-responsive">
+        <table class="table table-bordered-dark table-striped small">
             <thead>
                 <tr class="fs-4">
                     <th class="moneda">Moneda</th>
@@ -19,12 +19,13 @@
             </tbody>
         </table>
         </div>
+        
     </div>
+    
     <div class="cargando fs-4" v-else>
         <p class="text-center">¡Cargando Precios! Estamos trabajando...</p>  
     </div>
     </div>
-    
 </template>
 
 <script setup>
@@ -62,13 +63,23 @@
 
 table {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    height: 12rem;
+    height: 8rem;
 }
 
 .moneda,
 .compra,
 .venta {
-    font-size: 1.7rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.lista-precios {
+    padding: 1rem; 
+}
+
+tbody {
+    font-size: 1.2rem;
+    font-style: italic;
 }
 
 </style>

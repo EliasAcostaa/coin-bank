@@ -16,9 +16,9 @@
                 </h3>
             </div>
 
-            <div class="d-flex justify-content-center" id="lista-precios" v-if="!cargando">
-
-                <table class="table table-dark table-striped-lg">
+            <div class="" id="lista-precios" v-if="!cargando">
+                <div class="table-responsive">
+                <table class="table table-bordered-dark table-striped small">
                     <thead>
                         <tr>
                             <th class="exchange">Exchange</th>
@@ -31,14 +31,16 @@
                             <td>{{ exchange.nombre }}</td>
                             <td>${{ exchange.precioCompra }}</td>
                             <td>${{ exchange.precioVenta}}</td>
-                            <button class="p-2 bg-dark border btn btn-dark d-grid gap-2 col-12 mx-auto" @click="actExchange(exchange.codigo)">Usar</button>
+                            <button class="p-2 bg-light btn btn-light d-grid gap-1 col-12 mx-auto" @click="actExchange(exchange.codigo)">Usar</button>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
             <div v-else>
                 <p class="fs-4">¡Cargando precios! Estamos trabajando...</p>
             </div>
+            
         </div>
     </div>
 </div>
@@ -113,7 +115,7 @@ h1 {
 }
 
 #lista-precios {
-    padding: 3rem;  /* terminar */
+    padding: 1rem;  /* terminar */
 }
 
 #Moneda {
@@ -131,19 +133,21 @@ h1 {
 }
 
 table {
-    margin-bottom: -4rem;
+    margin-bottom: -7rem;
     font-size: 1.2rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-left: 4.5rem;
+    --bs-table-border-color: black;
 }
 
 button {
     font-size: 1.2rem;
+    --bs-btn-hover-color: #da1111f0;
 }
 
 tbody {
     font-size: 1.2rem;
     font-style: italic;
 }
+
 
 </style>
