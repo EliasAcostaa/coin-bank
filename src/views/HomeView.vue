@@ -16,7 +16,7 @@
                 </h3>
             </div>
 
-            <div class="" id="lista-precios" v-if="!cargando">
+            <div id="lista-precios" v-if="!cargando">
                 <div class="table-responsive">
                 <table class="table table-bordered-dark table-striped small">
                     <thead>

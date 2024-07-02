@@ -4,6 +4,7 @@
         <h3 class="text-center">Estado actual</h3>
         <div v-if="!cargando">
             <div v-if="balances.length !== 0">
+                <div class="table-responsive">
                 <table class="table table-dark table-sm">
                     <thead>
                         <tr class="text-center">
@@ -20,7 +21,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <p class="fs-4 text-center"> Total de dinero en cuenta: ${{ totalFinal }}</p>
+            </div>
+                <p class="total fs-4 text-center"> Total de dinero en cuenta: ${{ totalFinal }}</p>
             </div>
             <div v-else>
                 <p class="fs-4 text-center">¡La cuenta se encuentra vacía!</p>
@@ -104,8 +106,14 @@ table {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+td {
+    align-content: center;
+}
 
-
+.total {
+    margin-top: 5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 </style>
 

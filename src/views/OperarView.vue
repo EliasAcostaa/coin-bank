@@ -48,15 +48,14 @@
                     </div>
                 </div>
 
+                <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
                 <div class="table-responsive">
                     <table class="table table-bordered-dark table-striped small">
-                        <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
                         <PreciosTable></PreciosTable>
                     </table>
                 </div>
-  
-                <div class="row mb-1">
-                    <button class="d-grid gap-2 col-5 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                <div>
+                    <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
                 </div>
 
             </form>
@@ -193,9 +192,9 @@
 
 
 button {
-    padding: 1rem;
+    padding: 0.5rem;
     margin-top: 4rem;
-    font-size: large;
+    font-size: 1.3rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -209,13 +208,17 @@ h3 {
 }
 
 .exchange {
-    margin-top: 3rem;
-    margin-bottom: 4rem;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 label {
     font-size: 1.5rem;
+}
+
+table {
+    --bs-table-border-color: black;
 }
 
 /* PreciosTable es un COMPONENTE, la modificacion se realiza dentro del componente, aca no funcionará. */

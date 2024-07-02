@@ -3,6 +3,7 @@
     <div v-if="store.isLogged">
         <h3 class="text-center">Historial de Movimientos</h3>
         <div v-if="!cargando">
+            <div class="table-responsive">
             <table class="table table-dark table-sm" v-if="movimientos.length !== 0">
                 <thead>
                     <tr class="text-center">
@@ -30,8 +31,10 @@
                     <EditModal v-if="showEdit" :visible="showEdit" :movimiento="movimientoActual" @update:visible="showEdit = $event" @edit-move="editMove"/>
                 </tbody>
             </table>
+            
             <p v-else class="fs-4 text-center">No se registran movimientos anteriores.</p>
         </div>
+    </div>
         <div v-else>
             <p class="fs-4 text-center">¡Cargando Historial! Estamos trabajando...</p>
         </div>

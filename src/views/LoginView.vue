@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
   <div class="home">
   <div class="row align-items-start">
 
@@ -15,14 +16,14 @@
       <h3 class="font-monospace text-center">¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
         <form>
           <div class="row">
-            <div>
-              <label for="Usuario" class="text-center">Ingrese un nombre de usuario</label>
+            <div class="text-center">
+              <label for="Usuario">Ingrese un nombre de usuario</label> <!-- centrar Ingresar-->
               <div id="inputinfo">
-                <input class="input-group-text d-grid gap-2 col-4 mx-auto" type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
-                <button v-if="!intento" type="button" data-bs-dismiss="alert" @click="cambiarV()"> i </button>
+                <input class="form-control text-center" type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
+                <button v-if="!intento" class="btn btn-outline-warning" type="button" data-bs-dismiss="alert" @click="cambiarV()"> i </button>
               </div>
             </div>
-            <div>
+            <div> <!-- alerta -->
               <p class="alert alert-warning alert-dismissible fade show" role="alert" v-if="(!validName && intento) || mostrar">Introduzca una contraseña de al menos seis caracteres.
                 <button v-if="!intento" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="cambiarV()"></button>
                 <ul>
@@ -38,10 +39,30 @@
         <div class="d-grid gap-2 col-6 mx-auto">
           <button class="btn btn-outline-dark" style="background-color: goldenrod" type="button" @click="ingresar()">Ingresar</button>
         </div>
-    </div>
-
-  </div>
-  </div>
+        
+      <div class="row align-items-center">
+          <div class="col">
+            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+          </div>
+        </div>
+      </div>
+          <div class="col">
+            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+          </div>
+          <div class="col">
+            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+          </div>
+          <div class="col">
+            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+          </div>
+        </div>
+      </div>
+</div>
 </template>
                     
 <script setup>
@@ -80,9 +101,20 @@
 
 <style scoped>
 
+.container {
+    max-width: 950px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
+    margin: auto;
+    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
+    font-size: 1.2rem;
+}
+
 img {
   width: 21rem;
   margin-top: 1rem;
+}
+
+.marcas {
+  align-items: center;
 }
 
 #inputinfo {
@@ -104,10 +136,6 @@ img {
 button {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-input {
-  width: 20rem;
 }
 
 label {
