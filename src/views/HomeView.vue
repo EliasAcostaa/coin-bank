@@ -105,6 +105,13 @@
 
 <style scoped>
 
+.container {
+    max-width: 800px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
+    min-width: 200px;
+}
+
 h3 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-top: 3rem;

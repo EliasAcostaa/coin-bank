@@ -5,7 +5,7 @@
 
     <div class="col-sm-6 col-lg-6">
       <div class="text-center">
-      <img class="logo img-fluid img" alt="logo" src="../assets/logo/COIN BANK.gif">
+        <img class="logo img-fluid" alt="logo" src="../assets/logo/COIN BANK.gif">
         <div class="col">
           <h2 class="font-monospace text-sm-center">Realizá tus cambios. Acomodá tus ganancias.</h2>
         </div>
@@ -43,30 +43,35 @@
         
       </div>
 
-          <div class="col">
-            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
-          </div>
-          <div class="col">
-            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Tether-transparente.png">
-          </div>
+
+      <div class="row align-items-center">
+        
+        <div class="col">
+          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+        </div>
+        <div class="col">
+          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Tether-transparente.png">
+        </div>
         </div>
 
-        <div class="row align-items-center">
+      </div> 
 
-          <div class="col">
-            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/ArgenBTC-logo.png">
-          </div>
-          <div class="col">
-            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/Ethereum-Logo-1.png">
-          </div>
+      <div class="row align-items-center">
 
+        <div class="col">
+          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/ArgenBTC-logo.png">
         </div>
-
-        <div class="col-md-12">
-          <img class="img-fluid rounded mx-auto d-block" style="background-color: blue" alt="Responsive image" src="../assets/imagenes/logo-Belo.png">
+        <div class="col">
+          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/Ethereum-Logo-1.png">
         </div>
 
       </div>
+
+      <div class="col-md-12">
+        <img class="img-fluid rounded mx-auto d-block" style="background-color: blue" alt="Responsive image" src="../assets/imagenes/logo-Belo.png">
+      </div>                                                                                                            
+
+    </div>
 </div>
 </template>
                     
@@ -109,13 +114,12 @@
 .container {
     max-width: 900px; /* PROPIEDADES INFLUYEN EN TEXTO? */
     margin: auto;
-    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado)*/
     font-size: 1.2rem;
     min-width: 220px; /* medida menor a la que puede llegar la pagina Login */
 }
 
 .logo {
-  width: 18rem;
+  width: 19rem;
   margin-top: 1rem;
 }
 
@@ -131,9 +135,9 @@ img {
 }
 
 .home {
-  max-width: 850px;
+  max-width: 900px;
   margin: auto;
-  margin-top: 8rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) */
+  margin-top: 4rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) */
 }
 
 .col {

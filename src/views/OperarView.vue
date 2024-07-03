@@ -5,9 +5,16 @@
         <div class="container">
             <form class="text-center">
 
+                <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered-dark table-striped small">
+                        <PreciosTable></PreciosTable>
+                    </table>
+                </div>
+
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-xxl-block">
-                    <label class="col-xxl-6 col-form-label" for="TipoOperacion">Seleccione el tipo de operación </label>
+                    <div class="d-grid gap-2 d-xxl">
+                    <label class="col-xxl-12 col-form-label" for="TipoOperacion">Seleccione el tipo de operación </label>
                     <select class="btn btn-dark btn-lg dropdown-toggle" id="TipoOperacion" v-model="operacion.action">
                         <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
                     </select>
@@ -15,8 +22,8 @@
                 </div>
 
                 <div class="row mb-3">  
-                    <div class="d-grid gap-2 d-xxl-block">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
-                    <label class="col-xxl-5 col-form-label" for="Moneda">Seleccione una moneda </label>
+                    <div class="d-grid gap-2 d-xxl">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
+                    <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
                         <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
                             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                         </select>
@@ -24,8 +31,8 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-xxl-block">
-                        <label class="col-xxl-3 col-form-label" for="Cantidad">Cantidad </label>
+                    <div class="d-grid gap-2 d-xxl">
+                        <label class="col-xxl-12 col-form-label" for="Cantidad">Cantidad </label>
                         <input class="btn btn-dark btn-lg" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
                     </div>
                 </div>
@@ -35,25 +42,19 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-xxl-block">
-                        <label class="col-xxl-2 col-form-label" for="Fecha">Fecha </label>
+                    <div class="d-grid gap-2 d-xxl">
+                        <label class="col-xxl-12 col-form-label" for="Fecha">Fecha </label>
                         <input class="btn btn-dark btn-lg" type="date" id="Fecha" v-model="date.fecha" :max="todayString">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="d-grid gap-2 d-xxl-block">
-                        <label class="col-xxl-2 col-form-label" for="Hora">Hora </label>
+                    <div class="d-grid gap-2 d-xxl">
+                        <label class="col-xxl-12 col-form-label" for="Hora">Hora </label>
                         <input class="btn btn-dark btn-lg" type="time" id="Hora" v-model="date.hora">
                     </div>
                 </div>
 
-                <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered-dark table-striped small">
-                        <PreciosTable></PreciosTable>
-                    </table>
-                </div>
                 <div>
                     <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
                 </div>
@@ -183,11 +184,12 @@
 
 <style scoped>
 
+
 .container {
-    max-width: 800px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
-    margin: auto;
+    max-width: 500px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
+    margin-bottom: 1.5rem;
     margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
-    font-size: 1.2rem;
+    min-width: 200px;
 }
 
 
@@ -198,27 +200,22 @@ button {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.col-sm-4  {
-    font-size: 1.3rem;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
 h3 {
     margin-top: 3rem;
 }
 
 .exchange {
-    margin-top: 4rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: -0.5rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 label {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
-table {
-    --bs-table-border-color: black;
+.btn-dark {
+    --bs-btn-bg: #000000;
 }
 
 /* PreciosTable es un COMPONENTE, la modificacion se realiza dentro del componente, aca no funcionará. */
