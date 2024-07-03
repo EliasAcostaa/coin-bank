@@ -1,23 +1,23 @@
 <template>
   <div class="container">
-  <div class="home">
-  <div class="row align-items-start">
+    <div class="home">
+    <div class="row align-items-center">
 
-    <div class="col-6">
-      <div class="img-cont">
-      <img class="img-fluid" alt="logo" src="../assets/logo/COIN BANK.gif">
-      <div class="col">
-        <h2 class="text-right font-monospace">Realizá tus cambios. Acomodá tus ganancias.</h2>
-      </div>
+    <div class="col-sm-6 col-lg-6">
+      <div class="text-center">
+      <img class="logo img-fluid img" alt="logo" src="../assets/logo/COIN BANK.gif">
+        <div class="col">
+          <h2 class="font-monospace text-sm-center">Realizá tus cambios. Acomodá tus ganancias.</h2>
+        </div>
       </div>    <!-- a la hora de calcular col-numTanto, suma de los numeros de las columnas no debe ser +12 -->
     </div>
     
-    <div class="col-6">
+    <div style="padding: 2rem" class="col-sm-6">
       <h3 class="font-monospace text-center">¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
         <form>
-          <div class="row">
+          <div>
             <div class="text-center">
-              <label for="Usuario">Ingrese un nombre de usuario</label> <!-- centrar Ingresar-->
+              <label class="form-label" for="Usuario">Ingrese un nombre de usuario</label>
               <div id="inputinfo">
                 <input class="form-control text-center" type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
                 <button v-if="!intento" class="btn btn-outline-warning" type="button" data-bs-dismiss="alert" @click="cambiarV()"> i </button>
@@ -35,32 +35,37 @@
               </p>
             </div>
           </div>
-        </form>
-        <div class="d-grid gap-2 col-6 mx-auto">
+        </form> 
+        
+        <div class="d-grid gap-2 col-6 mx-auto">         <!-- imagenes de logos -->
           <button class="btn btn-outline-dark" style="background-color: goldenrod" type="button" @click="ingresar()">Ingresar</button>
         </div>
         
-      <div class="row align-items-center">
-          <div class="col">
-            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
-          </div>
-        </div>
       </div>
+
           <div class="col">
-            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
           </div>
           <div class="col">
-            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Tether-transparente.png">
           </div>
         </div>
+
         <div class="row align-items-center">
+
           <div class="col">
-            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/ArgenBTC-logo.png">
           </div>
           <div class="col">
-            <img class="marcas img-fluid" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+            <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/Ethereum-Logo-1.png">
           </div>
+
         </div>
+
+        <div class="col-md-12">
+          <img class="img-fluid rounded mx-auto d-block" style="background-color: blue" alt="Responsive image" src="../assets/imagenes/logo-Belo.png">
+        </div>
+
       </div>
 </div>
 </template>
@@ -102,19 +107,21 @@
 <style scoped>
 
 .container {
-    max-width: 950px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
+    max-width: 900px; /* PROPIEDADES INFLUYEN EN TEXTO? */
     margin: auto;
-    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
+    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado)*/
     font-size: 1.2rem;
+    min-width: 220px; /* medida menor a la que puede llegar la pagina Login */
 }
 
-img {
-  width: 21rem;
+.logo {
+  width: 18rem;
   margin-top: 1rem;
 }
 
-.marcas {
-  align-items: center;
+img {
+  width: 12rem;
+  margin: 0.5rem;
 }
 
 #inputinfo {
