@@ -1,6 +1,41 @@
 <template>
+
+<div id="carouselExampleInterval" class="opacity-70 carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img style="height: 500px; width: 1800px;" src="../assets/imagenes/carrito.jpg" class="d-block w-100" alt="img">
+      <div class="carousel-caption d-sm d-md-block">
+        <p class="fs-4">Ofrecemos una página amigable enfocada principalmente en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="2000"> <!-- cambiar imagen/crear logo con resolucion ADECUADA -->
+      <img style="height: 500px; width: 1800px;" src="../assets/imagenes/pexels-fauxels-3183132.jpg" class="d-block w-100" alt="img"> 
+    </div>
+
+    <div class="carousel-item">
+      <img style="height: 500px; width: 1800px;" src="../assets/imagenes/pexels-anna-nekrashevich-6802049.jpg" class="d-block w-100" alt="img">
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+</div>
+
   <div class="container">
+
     <div class="home">
+
     <div class="row align-items-center">
 
     <div class="col-sm-6 col-lg-6">
@@ -43,34 +78,22 @@
         
       </div>
 
-
+        <!-- iconos -->
       <div class="row align-items-center">
         
         <div class="col">
-          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
+          <img class="img-fluid rounded mx-auto d-block" alt="image" src="../assets/imagenes/logo-Bitcoin-transparente.png">
         </div>
-        <div class="col">
-          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/logo-Tether-transparente.png">
-        </div>
-        </div>
-
-      </div> 
-
-      <div class="row align-items-center">
 
         <div class="col">
-          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/ArgenBTC-logo.png">
-        </div>
-        <div class="col">
-          <img class="img-fluid rounded mx-auto d-block" alt="Responsive image" src="../assets/imagenes/Ethereum-Logo-1.png">
+          <img class="img-fluid rounded mx-auto d-block" alt="image" src="../assets/imagenes/logo-Tether-transparente.png">
         </div>
 
+        <div class="col">
+          <img class="img-fluid rounded mx-auto d-block" alt="image" src="../assets/imagenes/Ethereum-Logo-1.png">
+        </div>
       </div>
-
-      <div class="col-md-12">
-        <img class="img-fluid rounded mx-auto d-block" style="background-color: blue" alt="Responsive image" src="../assets/imagenes/logo-Belo.png">
-      </div>                                                                                                            
-
+    </div>
     </div>
 </div>
 </template>
@@ -124,8 +147,7 @@
 }
 
 img {
-  width: 12rem;
-  margin: 0.5rem;
+  width: 15rem;
 }
 
 #inputinfo {

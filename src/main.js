@@ -10,8 +10,10 @@ import '@/assets/bootstrap.min.css' // linkeo bootstrap de js
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/assets/custom.code.css' // importamos el archivo de estilos propios (no predeterminados de bootstrap)
+import { Tooltip, Toast, Popover } from 'bootstrap'; // importamos comportamientos JS de bootstrap para animar.
+                                                
+// BOOTSTRAP COMUN != BOOTSTRAP PARA VUE
 
-                                                // BOOTSTRAP COMUN != BOOTSTRAP PARA VUE
 
 const pinia = createPinia()
 

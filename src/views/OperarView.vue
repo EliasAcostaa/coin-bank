@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
                     <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
                 </div>
 
