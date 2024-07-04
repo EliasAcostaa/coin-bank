@@ -1,37 +1,5 @@
 <template>
 
-<div id="carouselExampleInterval" class="opacity-70 carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img style="height: 500px; width: 1800px;" src="../assets/imagenes/carrito.jpg" class="d-block w-100" alt="img">
-      <div class="carousel-caption d-sm d-md-block">
-        <p class="fs-4">Ofrecemos una página amigable enfocada principalmente en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item" data-bs-interval="2000"> <!-- cambiar imagen/crear logo con resolucion ADECUADA -->
-      <img style="height: 500px; width: 1800px;" src="../assets/imagenes/pexels-fauxels-3183132.jpg" class="d-block w-100" alt="img"> 
-    </div>
-
-    <div class="carousel-item">
-      <img style="height: 500px; width: 1800px;" src="../assets/imagenes/pexels-anna-nekrashevich-6802049.jpg" class="d-block w-100" alt="img">
-    </div>
-
-  </div>
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-
-</div>
-
   <div class="container">
 
     <div class="home">
@@ -96,6 +64,44 @@
     </div>
     </div>
 </div>
+
+
+<div id="carouselExampleInterval" class="opacity-70 carousel slide" data-bs-ride="carousel">
+  <div style="margin-top: 1rem; margin-bottom: 1rem;" class="carousel-inner">
+
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/pajaro.png" class="img-responsive" alt="img">
+      <div class="carousel-caption d-sm d-md-block">
+        <p class="descripcion">Ofrecemos una página amigable enfocada en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="2000"> <!-- cambiar imagen/crear logo con resolucion ADECUADA -->
+      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/pexels-fauxels-3183132.jpg" class="img-responsive" alt="img"> 
+    </div>
+
+    <div class="carousel-item">
+      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/reloj.avif" class="img-responsive" alt="img">
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+
+</div>
+
+
+
+
 </template>
                     
 <script setup>
@@ -135,7 +141,7 @@
 <style scoped>
 
 .container {
-    max-width: 900px; /* PROPIEDADES INFLUYEN EN TEXTO? */
+    max-width: 1000px; /* PROPIEDADES INFLUYEN EN TEXTO? */
     margin: auto;
     font-size: 1.2rem;
     min-width: 220px; /* medida menor a la que puede llegar la pagina Login */
@@ -157,7 +163,7 @@ img {
 }
 
 .home {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   margin-top: 4rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) */
 }
@@ -167,7 +173,7 @@ img {
 }
 
 button {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 
@@ -186,6 +192,12 @@ p {
 
 h2 {
   margin-top: 3rem;
+}
+
+.descripcion {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  font-style: italic;
 }
 
 </style>
