@@ -1,5 +1,23 @@
 <template>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav"> <!-- centrar enlaces!!!! -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Contacto</a> <!-- hago pagina de contacto?¿-->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../views/SobreNosotrosView.vue">Sobre nosotros</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
   <div class="container">
 
     <div class="home">
@@ -72,7 +90,7 @@
     <div class="carousel-item active" data-bs-interval="10000">
       <img style="height: 650px; width: 1700px;" src="../assets/imagenes/pajaro.png" class="img-responsive" alt="img">
       <div class="carousel-caption d-sm d-md-block">
-        <p class="descripcion">Ofrecemos una página amigable enfocada en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
+        <p class="descripcion">Ofrecemos un servicio amigable, cuyo propósito está enfocado en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
       </div>
     </div>
 

@@ -6,7 +6,7 @@
   <div v-else>
     <router-view :to="{name: 'LoginView'}"></router-view>
   </div>
-  <MainFooter/> <!-- main footer aparece en lugar correcto? -->
+  <MainFooter/> 
 </template>
 
 <script setup>
