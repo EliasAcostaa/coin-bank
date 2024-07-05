@@ -1,18 +1,20 @@
 <template>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <div class="container justify-content-evenly-lg">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav"> <!-- centrar enlaces!!!! -->
+
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Contacto</a> <!-- hago pagina de contacto?¿-->
+          <router-link :to="{name: 'ContactoView'}"      
+            class="nav-link active">Contacto</router-link>
         </li>
 
-        <li class="nav-item">   <!-- error de no poder escribir en pag arreglado. -->
+        <li class="nav-item">  
             <router-link :to="{name: 'SobreNosotrosView'}"      
             class="nav-link active">Sobre Nosotros</router-link>
         </li>
@@ -87,39 +89,6 @@
     </div>
 </div>
 
-
-<div id="carouselExampleInterval" class="opacity-70 carousel slide" data-bs-ride="carousel">
-  <div style="margin-top: 1rem; margin-bottom: 1rem;" class="carousel-inner">
-
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/pajaro.png" class="img-responsive" alt="img">
-      <div class="carousel-caption d-sm d-md-block">
-        <p class="descripcion">Ofrecemos un servicio amigable, cuyo propósito está enfocado en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item" data-bs-interval="2000"> <!-- cambiar imagen/crear logo con resolucion ADECUADA -->
-      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/pexels-fauxels-3183132.jpg" class="img-responsive" alt="img"> 
-    </div>
-
-    <div class="carousel-item">
-      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/reloj.avif" class="img-responsive" alt="img">
-    </div>
-
-  </div>
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-
-
-</div>
 
 
 
@@ -209,10 +178,5 @@ h2 {
   margin-top: 3rem;
 }
 
-.descripcion {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.5rem;
-  font-style: italic;
-}
 
 </style>

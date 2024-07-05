@@ -1,20 +1,19 @@
 <template>
     
-<nav class="navbar navbar-expand-lg navbar-dark bg-black"> <!-- clase mayor que da diseño de bootstrap a barra-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black"> 
     
     <div class="container justify-content-evenly-lg"> 
             
-        <div class="row" id="navbar"> <!-- clase eli de barra -->   
         <router-link :to="{name: 'LoginView'}"></router-link>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" id="navbarNav"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav">
-                <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
+                <li class="nav-item">       <!-- router-link...... NO <a> para enlaces!!! -->
                     <img class="img-fluid" alt="logo" mx-auto src="../assets/imagenes/COIN_BANK-transparente-removebg-preview.png">
                 </li>
                 <li class="nav-item">   
@@ -41,7 +40,6 @@
 
         </div>
         </div>
-    </div>
 </nav>
 </template>
 
@@ -63,12 +61,8 @@
 <style scoped>
 
 .nav-link {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 3rem;
-}
-
-.navbar {
-    padding: 0rem;
 }
 
 img {
