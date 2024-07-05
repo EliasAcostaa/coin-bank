@@ -1,18 +1,22 @@
 <template>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <div class="container-fluid">
+  <div class="container justify-content-evenly-lg">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav"> <!-- centrar enlaces!!!! -->
       <ul class="navbar-nav">
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Contacto</a> <!-- hago pagina de contacto?¿-->
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../views/SobreNosotrosView.vue">Sobre nosotros</a>
+
+        <li class="nav-item">   <!-- error de no poder escribir en pag arreglado. -->
+            <router-link :to="{name: 'SobreNosotrosView'}"      
+            class="nav-link active">Sobre Nosotros</router-link>
         </li>
+
       </ul>
     </div>
   </div>
@@ -157,13 +161,6 @@
 </script>
 
 <style scoped>
-
-.container {
-    max-width: 1000px; /* PROPIEDADES INFLUYEN EN TEXTO? */
-    margin: auto;
-    font-size: 1.2rem;
-    min-width: 220px; /* medida menor a la que puede llegar la pagina Login */
-}
 
 .logo {
   width: 19rem;

@@ -1,6 +1,15 @@
 <template>
     
-<h1>HOLAAAA</h1> <!-- por que no anda lo que escribo????? -->
+<h1>HOLAAAA</h1> <!-- por que no anda lo que escribo????? 
+                    YA ENTENDI POR QUE NO ANDA!!!! debo escribir esto: 
+
+                    <li class="nav-item">   
+                    <router-link :to="{name: 'HomeView'}"
+                    class="nav-link">Home</router-link>
+
+                    EN LA NAVBAR DEL LOGIN!!!!!
+                    
+                </li>-->
 
 </template>
 

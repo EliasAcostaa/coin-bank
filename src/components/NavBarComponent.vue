@@ -1,15 +1,21 @@
 <template>
     
-<nav class="navbar navbar-expand-lg navbar-white" style="background-color: black"> <!-- clase mayor que da diseño de bootstrap a barra-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black"> <!-- clase mayor que da diseño de bootstrap a barra-->
     
-    <div class="container justify-content-evenly"> 
+    <div class="container justify-content-evenly-lg"> 
             
         <div class="row" id="navbar"> <!-- clase eli de barra -->   
-            <router-link :to="{name: 'LoginView'}"></router-link>
-            
-            <ul class="navbar-nav"> <!-- ".img responsive" o "img-fluid" ?? -->
+        <router-link :to="{name: 'LoginView'}"></router-link>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" id="navbarNav"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">       <!-- inclui dentro del <> el codigo de elias (router-link......) -->
-                    <img class="img resposive" alt="logo" mx-auto src="../assets/logo/COIN BANK.gif">
+                    <img class="img-fluid" alt="logo" mx-auto src="../assets/imagenes/COIN_BANK-transparente-removebg-preview.png">
                 </li>
                 <li class="nav-item">   
                     <router-link :to="{name: 'HomeView'}"
@@ -30,7 +36,10 @@
                 <li class="nav-link">      
                     <button class="btn btn-outline-light" type="button" @click="logOut()">Cerrar Sesión</button>
                 </li>
+                
             </ul>
+
+        </div>
         </div>
     </div>
 </nav>
@@ -52,8 +61,8 @@
 
 
 <style scoped>
+
 .nav-link {
-    color: white;
     font-size: 1.2rem;
     margin: 3rem;
 }
@@ -63,8 +72,7 @@
 }
 
 img {
-    width: 7rem;
-    margin-top: 1rem;
+    width: 10rem;
 }
 
 
