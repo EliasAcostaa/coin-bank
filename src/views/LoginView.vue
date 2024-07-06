@@ -50,9 +50,9 @@
                 <button v-if="!intento" class="btn btn-outline-warning" type="button" data-bs-dismiss="alert" @click="cambiarV()"> i </button>
               </div>
             </div>
-            <div> <!-- alerta -->
-              <p class="alert alert-warning alert-dismissible fade show" role="alert" v-if="(!validName && intento) || mostrar">Introduzca una contraseña de al menos seis caracteres.
-                <button v-if="!intento" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="cambiarV()"></button>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" v-if="(!validName && intento) || mostrar">
+              <button v-if="!intento" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="cambiarV()"></button>
+              <p>Introduzca una contraseña de al menos seis caracteres.
                 <ul>
                   <li>Debe contener números.</li>
                   <li>Debe contener letras.</li>
@@ -86,7 +86,7 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
 </div>
 
 
