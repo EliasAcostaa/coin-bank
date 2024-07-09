@@ -45,7 +45,7 @@
     </div>
 
     <div class="text-center">
-      <input class="btn btn-warning btn-lg" type="submit" value="Enviar">
+      <input class="btn btn-outline-warning btn-lg" type="submit" value="Enviar">
     </div>
 
 
@@ -83,7 +83,7 @@
 label {
   font-size: 1.5rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 h2 {
@@ -99,7 +99,7 @@ h4 {
 .form {
   border-radius: 10px;
   box-shadow: 0 0 60px #000000;
-  background-color: rgb(184, 157, 70);
+  background-color: rgb(17, 15, 15);
   width: min( 60rem, 100% ); /*mínimo tamaño del elemento (600px)*/
   margin: 0 auto;
   padding: 2rem;
