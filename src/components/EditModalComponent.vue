@@ -1,67 +1,42 @@
 <template>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+  
     <div v-if="visible" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
-        <h2>{{ Movimiento._id }}</h2>
+        <h2 class="titulo">{{ Movimiento._id }}</h2>
         <div>
-          <label for="accion">Tipo de Transaccion:</label>
-          <select id="accion" v-model="Movimiento.action">
+          <label class="form-label col-6" for="accion">Transacción</label>
+          <select class="text-center col-5" id="accion" v-model="Movimiento.action">
             <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
           </select>
         </div>
         <div>
-          <label for="Moneda">CriptoMoneda:</label>
-          <select id="Moneda" v-model="Movimiento.crypto_code">
+          <label class="form-label col-6" for="Moneda">CriptoMoneda</label>
+          <select class="text-center col-6" id="Moneda" v-model="Movimiento.crypto_code">
             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
           </select>
         </div>
         <div>
-          <label for="Cantidad">Cantidad</label>
-          <input type="number" id="Cantidad" v-model="Movimiento.crypto_amount">
+          <label class="form-label col-5" for="Cantidad">Cantidad</label>
+          <input class="text-center col-5" type="number" id="Cantidad" v-model="Movimiento.crypto_amount">
+        </div>
+        <div class="text-center" style="margin-top: 1.5rem;">
+          <p class="text-center"> Total ar$ {{ Movimiento.money }}</p>
         </div>
         <div>
-          <p>total ar$ {{ Movimiento.money }}</p>
+          <p class="text-center" style="margin-bottom: 2rem;"> Fecha: {{ formatearFecha(Movimiento.datetime) }}</p>
         </div>
-        <div>
-          <p>fecha: {{ formatearFecha(Movimiento.datetime) }}</p>
+
+        <div class="row">
+        <div class="col-6">
+          <button class="btn btn-warning" id="botonEditar" @click="editar">Editar</button>
         </div>
-        <div>
-          <button id="botonEditar" @click="editar">Editar</button>
-        </div>
-        <div>
-          <button id="botonCerrar" @click="closeModal">Cancelar</button>
+        <div class="col-6">
+          <button class="btn btn-warning" id="botonCerrar" @click="closeModal">Cancelar</button>
         </div>
       </div>
+
+      </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
 </template>
 
 <script setup>
@@ -160,6 +135,38 @@ import TransactionsService from '@/Services/TransaccionesService';
   watch(Movimiento.value, updateTotal)
 </script>
 
+
+
+
 <style scoped>
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: rgb(252, 252, 252);
+    padding: 20px;
+    max-width: 300px;
+    position: relative;
+    border: 2px solid #000000;
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #000000;
+    font-weight: bold;
+  }
+
+
+  .titulo {
+    font-size: 1.2rem;
+    font-weight: bolder;     /* num de id */
+  }
 
   </style>
