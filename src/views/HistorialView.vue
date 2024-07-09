@@ -4,7 +4,7 @@
         <h3 class="text-center">Historial de Movimientos</h3>
         <div v-if="!cargando">
             <div class="table-responsive">
-            <table class="table table-dark table-sm" v-if="movimientos.length !== 0">
+            <table class="table table-bordered-dark table-striped small" v-if="movimientos.length !== 0">
                 <thead>
                     <tr class="text-center">
                         <th>Número de movimiento</th>
@@ -23,9 +23,9 @@
                         <td>{{ movimiento.crypto_amount }}</td>
                         <td>${{ movimiento.money }}</td>
                         <td>{{ formatearFecha(movimiento.datetime) }}</td>
-                        <td><button class="p-2 bg-dark border btn btn-dark d-grid gap-2 col-12 mx-auto" @click="abrirModal(movimiento)" >Info</button></td>
-                        <td><button class="p-2 bg-dark border btn btn-dark d-grid gap-2 col-12 mx-auto" @click="abrirEditar({...movimiento})">Editar</button></td>
-                        <td><button class="p-2 bg-dark border btn btn-dark d-grid gap-2 col-12 mx-auto" @click="Eliminar(movimiento._id)">Eliminar</button></td>
+                        <td><button class="p-3 bg-dark btn btn-dark d-grid gap-1 col-12 mx-auto" @click="abrirModal(movimiento)" >Info</button></td>
+                        <td><button class="p-3 bg-dark btn btn-dark d-grid gap-1 col-12 mx-auto" @click="abrirEditar({...movimiento})">Editar</button></td>
+                        <td><button class="p-3 bg-dark btn btn-dark d-grid gap-1 col-12 mx-auto" @click="Eliminar(movimiento._id)">Eliminar</button></td>
                     </tr>
                     <InfoModal v-if="showModal" :visible="showModal" :movimiento="movimientoActual" @update:visible="showModal = $event" />
                     <EditModal v-if="showEdit" :visible="showEdit" :movimiento="movimientoActual" @update:visible="showEdit = $event" @edit-move="editMove"/>

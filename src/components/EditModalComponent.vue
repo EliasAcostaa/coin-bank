@@ -1,4 +1,30 @@
 <template>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
     <div v-if="visible" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <h2>{{ Movimiento._id }}</h2>
@@ -32,6 +58,10 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+</div>
+</div>
 </template>
 
 <script setup>
@@ -131,42 +161,5 @@ import TransactionsService from '@/Services/TransaccionesService';
 </script>
 
 <style scoped>
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  input, select {
-    color: #000000;
-    background-color: rgba(161, 69, 69, 0.767);
-  }
-  
-  .modal-content {
-    background: rgba(161, 69, 69, 0.767);
-    padding: 15px;
-    border-radius: 10%;
-    min-width: 300px;
-    position: relative;
-    border: 5px solid #000000;
-    text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #000000;
-  }
-
-  #botonCerrar {
-    color:#ffffff;
-    padding: 5px;
-    background-color: rgb(5, 10, 71);
-    border: solid rgb(2, 2, 48);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 10rem;
-  }
 
   </style>

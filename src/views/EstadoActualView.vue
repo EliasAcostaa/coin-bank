@@ -5,7 +5,7 @@
         <div v-if="!cargando">
             <div v-if="balances.length !== 0">
                 <div class="table-responsive">
-                <table class="table table-dark table-sm">
+                <table class="table table-bordered-dark table-striped small">
                     <thead>
                         <tr class="text-center">
                             <th>CriptoMoneda</th>
@@ -102,7 +102,7 @@ h3 {
 }
 
 table {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 

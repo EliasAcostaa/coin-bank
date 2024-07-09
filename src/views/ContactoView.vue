@@ -20,41 +20,45 @@
 <h4 class="text-center">Te escuchamos para poder mejorar tu experiencia en Coin Bank.</h4>
 
 <div style="padding: 1rem;" class="contorno">
+              <!-- no se puede enviar a ambos mails??????¿¿ -->
+  <form action="https://formsubmit.co/abiibar2002@gmail.com" method="POST" class="form row g-4">
+  <form action="https://formsubmit.co/elias2016acosta@gmail.com" method="POST"></form>
 
-  <form class="row g-4">
-  
     <div class="col-lg-6">
        <label class="form-label">Nombre</label>
-       <input class="form-control form-control-lg" type ="text" placeholder="Su nombre">
+       <input name="name" class="form-control form-control-lg" type ="text" placeholder="Su nombre">
     </div>
 
     <div class="col-lg-6">
       <label class="form-label">Teléfono</label>
-      <input class="form-control form-control-lg" type ="tel" placeholder="Su teléfono">
+      <input name="phone" class="form-control form-control-lg" type ="tel" placeholder="Su teléfono">
     </div>
 
     <div class="col-12">
       <label class="form-label">Correo electrónico</label>
-      <input class="form-control form-control-lg" type="email" placeholder="Su email">
+      <input name="email" class="form-control form-control-lg" type="email" placeholder="Su email">
     </div>
 
     <div class="col-12">
       <label>Mensaje</label>
-      <textarea rows="3" class="form-control form-control-lg"></textarea>
+      <textarea name="message" rows="3" class="form-control form-control-lg"></textarea>
     </div>
 
     <div class="text-center">
       <input class="btn btn-warning btn-lg" type="submit" value="Enviar">
     </div>
 
+
+    <input type="hidden" name="_next" value=" http://localhost:8080/">
+    <input type="hidden" name="_captcha" value="false">
+
   </form>
             
 </div>
 
 
-
-
 </template>
+
 
 
 
@@ -64,6 +68,7 @@
     const router = useRouter();
 
 </script>
+
 
 
 
@@ -91,7 +96,7 @@ h4 {
   margin-bottom: 3rem;
 }
 
-form {
+.form {
   border-radius: 10px;
   box-shadow: 0 0 60px #000000;
   background-color: rgb(184, 157, 70);
