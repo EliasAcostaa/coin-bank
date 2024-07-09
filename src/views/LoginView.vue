@@ -45,7 +45,7 @@
           <div>
             <div class="text-center">
               <label class="form-label" for="Usuario">Ingrese un nombre de usuario</label>
-              <div id="inputinfo">
+              <div id="inputinfo"> <!-- alerta (desde boton hasta mensaje) VER ERROR?¿  -->
                 <input class="form-control text-center" type="text" id="Usuario" v-model="nombre" placeholder="Nombre de Usuario">
                 <button v-if="!intento" class="btn btn-outline-warning" type="button" data-bs-dismiss="alert" @click="cambiarV()"> i </button>
               </div>
@@ -88,6 +88,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -177,6 +178,7 @@ p {
 h2 {
   margin-top: 3rem;
 }
+
 
 
 </style>
