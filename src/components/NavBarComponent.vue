@@ -32,6 +32,14 @@
                     <router-link :to="{name: 'EstadoActualView'}"
                     class="nav-link">Cuentas</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link :to="{name: 'ContactoView'}"      
+                    class="nav-link">Contacto</router-link>
+                </li>
+                <li class="nav-item">  
+                    <router-link :to="{name: 'SobreNosotrosView'}"    
+                    class="nav-link">Sobre Nosotros</router-link>
+                </li>
                 <li class="nav-link">      
                     <button class="btn btn-outline-light" type="button" @click="logOut()">Cerrar Sesión</button>
                 </li>
@@ -58,11 +66,12 @@
 </script>
 
 
+
 <style scoped>
 
 .nav-link {
-    font-size: 1.4rem;
-    margin: 3rem;
+    font-size: 1.2rem;
+    margin: 2.5rem;
 }
 
 img {
