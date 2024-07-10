@@ -64,7 +64,9 @@
 
 <script setup>
     import { useRouter } from 'vue-router';
+    import { useUserStore } from '@/store/User';
 
+    const store = useUserStore();
     const router = useRouter();
 
 </script>
