@@ -1,7 +1,7 @@
 <template>
     
 
-<nav class="navbar">
+<nav v-if="!store.isLogged" class="navbar">
   <div class="container"> 
 
     <router-link :to="{name: 'LoginView'}" class="navbar-brand">
