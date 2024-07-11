@@ -90,7 +90,7 @@ label {
 
 h2 {
   font-family: monospace;
-  padding: 1rem;
+  padding: 2.5rem;
 }
 
 h4 {

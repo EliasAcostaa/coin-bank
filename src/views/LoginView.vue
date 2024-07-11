@@ -2,10 +2,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
   <div class="container">
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav"> <!-- centrar enlaces!!!! -->
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> <!-- centrar enlaces!!!! -->
 
       <ul class="navbar-nav">
 
@@ -130,6 +132,9 @@
 
 </script>
 
+
+
+
 <style scoped>
 
 .logo {
@@ -150,7 +155,7 @@ img {
 .home {
   max-width: 1000px;
   margin: auto;
-  margin-top: 4rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) */
+  margin-top: 4rem; 
 }
 
 .col {
@@ -178,7 +183,6 @@ p {
 h2 {
   margin-top: 3rem;
 }
-
 
 
 </style>
