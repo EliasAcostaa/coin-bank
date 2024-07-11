@@ -33,7 +33,7 @@
                 <div class="row mb-3">
                     <div class="d-grid gap-2 d-xxl">
                         <label class="col-xxl-12 col-form-label" for="Cantidad">Cantidad </label>
-                        <input class="btn btn-dark btn-lg" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
+                        <input class="btn btn-dark btn-lg" type="number" id="Cantidad" v-model="operacion.crypto_amount">
                     </div>
                 </div>
 
@@ -160,6 +160,7 @@
                 operacion.value.money = (Cotizacion.totalBid * operacion.value.crypto_amount).toFixed(2);
             }
         } else {
+            operacion.value.crypto_amount = 0;
             operacion.value.money = 0;
         }
     };
