@@ -24,7 +24,7 @@
                 <div class="row mb-3">  
                     <div class="d-grid gap-2 d-xxl">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
                     <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
-                        <select data-bs-toggle="popover" data-bs-content="Contenido del popover" class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
+                        <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
                             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                         </select>
                     </div>
@@ -56,9 +56,9 @@
                 </div>
 
                 <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
-                    <button data-bs-toggle="popover" data-bs-content="Su contenido de popover aquí" class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                    <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
                 </div>  <!-- popover funciona o no? VER -->
-
+                       <!--data-bs-toggle="popover" data-bs-content="Su contenido de popover aquí"-->
             </form>
         </div>
     </div>
@@ -186,9 +186,9 @@
 
 
 .container {
-    max-width: 500px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
+    max-width: 500px; 
     margin-bottom: 1.5rem;
-    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
+    margin-top: 3rem;   
     min-width: 200px;
 }
 
