@@ -143,7 +143,7 @@ import { useUserStore } from '../store/User';
 @media (min-width: 768px) {
     .servicios{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /*fr = fraccion / repetir 3 veces una (1) fraccion*/
+    grid-template-columns: repeat(3, 1fr); 
     column-gap: 3rem;
     margin: 2rem;
     }

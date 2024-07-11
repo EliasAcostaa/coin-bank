@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> <!-- centrar enlaces!!!! -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> 
 
       <ul class="navbar-nav">
 

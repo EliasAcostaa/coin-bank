@@ -24,7 +24,7 @@
                 <div class="row mb-3">  
                     <div class="d-grid gap-2 d-xxl">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
                     <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
-                        <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
+                        <select data-bs-toggle="popover" data-bs-content="Contenido del popover" class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
                             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
                         </select>
                     </div>
@@ -56,8 +56,8 @@
                 </div>
 
                 <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
-                    <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
-                </div>
+                    <button data-bs-toggle="popover" data-bs-content="Su contenido de popover aquí" class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                </div>  <!-- popover funciona o no? VER -->
 
             </form>
         </div>
