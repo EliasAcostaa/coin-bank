@@ -16,55 +16,30 @@
 </nav>
 
 
+
+<section>
+<h1 class="text-center">Conectate al futuro de las finanzas con redes de pago innovadoras. Sé creativo. No tengas miedo de pensar fuera de la caja.</h1>
+</section>
+
+
+
 <h2 class="text-center">Sobre Nosotros</h2> 
+<h3 class="text-center descripcion">Ofrecemos un servicio amigable, cuyo propósito está enfocado en el manejo de
+   monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</h3>
+     
+<h4 class="text-center descripcion2">
+  ¡Ahora las transacciones son más rápidas y económicas! Nos manejamos con mejores tarifas y 
+  regulaciones que los sistemas financieros tradicionales. 
+  Utilizamos tecnología de cadena de bloques para proteger las transacciones y 
+  garantizar su seguridad. Un sistema resistente a la falsificación y 
+  manipulación. Además, vas a tener un control total sobre tus criptomonedas, sin necesidad de 
+  depender de bancos u otras instituciones financieras.
+</h4>
 
-<div id="carouselExampleInterval" class="opacity-70 carousel slide" data-bs-ride="carousel">
-  <div style="margin-top: 1rem; margin-bottom: 1rem;" class="carousel-inner">
-
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/pajaro.png" class="img-responsive" alt="img">
-      <div class="carousel-caption d-sm d-md-block">
-        <p class="descripcion">Ofrecemos un servicio amigable, cuyo propósito está enfocado en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item" data-bs-interval="2000"> <!-- cambiar imagen/crear logo con resolucion ADECUADA -->
-      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/fondo2.png" class="img-responsive" alt="img"> 
-      <div class="carousel-caption d-sm d-md-block">
-        <p class="descripcion2">
-          ¡Ahora las transacciones son más rápidas y económicas! Nos manejamos con mejores tarifas y 
-          regulaciones que los sistemas financieros tradicionales. 
-          Utilizamos tecnología de cadena de bloques para proteger las transacciones y 
-          garantizar su seguridad. Un sistema resistente a la falsificación y 
-          manipulación. Además, vas a tener un control total sobre tus criptomonedas, sin necesidad de 
-          depender de bancos u otras instituciones financieras.
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
 
 <!-- ICONOS -->
 
-<section>
-
-  <h1 class="text-center">Conectate al futuro de las finanzas con redes de pago innovadoras. Sé creativo. No tengas miedo de pensar fuera de la caja.</h1>
-
-  <h2 class="text-center">Nuestros servicios</h2>
-
-</section>
 
 <div class="servicios"> 
   <section class="servicio"> 
@@ -79,7 +54,7 @@
       </svg>
     </div>
 
-    <p>Ofrecemos un servicio amigable, cuyo propósito está enfocado en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
+    <p>Somos dos programadores entusiastas. Bienvenidos a nuestro proyecto de criptomonedas.</p>
           
   </section>
 
@@ -168,24 +143,25 @@ import { useUserStore } from '../store/User';
 }
 
 .servicio .iconos {
-  animation-name: slidein;
+  animation-name: rotate;
   animation-iteration-count: infinite;
-  animation-duration: 3s;
-  background:linear-gradient(141deg, #fce6ac 25%, #eee 40%, #fce6ac 45%);
-  padding-top:23vh;
-  height:50vh;
-  border-radius: 100%;
+  animation-duration: 7s;
+  background:linear-gradient(141deg, #fcca41 25%, #ffe676 40%, #fcca41 45%);
+  border-radius: 100rem;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-@keyframes slidein {
-  from {
-    margin-left: 30%;
-    width: 100%;
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
   }
-
-  to {
-    margin-left: 100%;
-    width: 100%;
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -193,9 +169,19 @@ import { useUserStore } from '../store/User';
 
 
 .descripcion {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  margin-bottom: 3rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.descripcion2 {
   font-size: 1.5rem;
   font-style: italic;
+  margin-bottom: 8rem;
+  padding-left: 7rem;
+  padding-right: 7rem;
 }
 
 .navbar {
@@ -208,15 +194,16 @@ h2 {
 }
 
 h1 {
-  animation: showup 6s infinite;
-  background:linear-gradient(141deg, #fce6ac 25%, #eee 40%, #fce6ac 45%);
-  color:#a0812c;
+  animation: showup 7s infinite;
+  background:linear-gradient(141deg, #fcca41 25%, #ffe676 40%, #fcca41 45%);
+  color:#b16e09;
   font-family:'Roboto';
   font-weight:400;
   font-size:32px;
   padding-top:35vh;
   height:80vh;
   overflow:hidden;
+  margin-top: 5rem;
 }
 
 @keyframes showup {
@@ -240,5 +227,15 @@ h1 {
     80% {opacity:1;}
     100% {opacity:0;width:355px;}
 }
+
+.descripcion,
+.descripcion2 {
+  animation: slidein 7s;
+  font-family:'Roboto';
+  font-weight:400;
+  overflow:hidden;
+  animation-iteration-count: 1;
+}
+
 
 </style>
