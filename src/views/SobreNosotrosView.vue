@@ -42,10 +42,6 @@
       </div>
     </div>
 
-    <div class="carousel-item">
-      <img style="height: 650px; width: 1700px;" src="../assets/imagenes/reloj.avif" class="img-responsive" alt="img">
-    </div>
-
   </div>
 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -63,7 +59,11 @@
 <!-- ICONOS -->
 
 <section>
-    <h2 class="text-center">Nuestros servicios</h2>
+
+  <h1 class="text-center">Conectate al futuro de las finanzas con redes de pago innovadoras. Sé creativo. No tengas miedo de pensar fuera de la caja.</h1>
+
+  <h2 class="text-center">Nuestros servicios</h2>
+
 </section>
 
 <div class="servicios"> 
@@ -79,7 +79,7 @@
       </svg>
     </div>
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptas blanditiis nostrum fuga aspernatur.</p>
+    <p>Ofrecemos un servicio amigable, cuyo propósito está enfocado en el manejo de monedas virtuales, facilitando a la par la compra, venta y tenencia de criptomonedas y activos digitales.</p>
           
   </section>
 
@@ -168,13 +168,25 @@ import { useUserStore } from '../store/User';
 }
 
 .servicio .iconos {
-    height: 15rem;
-    width: 15rem;
-    background-color: #fad501;
-    border-radius: 50%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  background:linear-gradient(141deg, #fce6ac 25%, #eee 40%, #fce6ac 45%);
+  padding-top:23vh;
+  height:50vh;
+  border-radius: 100%;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 30%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 100%;
+    width: 100%;
+  }
 }
 
 
@@ -193,6 +205,40 @@ import { useUserStore } from '../store/User';
 
 h2 {
   margin: 5rem;
+}
+
+h1 {
+  animation: showup 6s infinite;
+  background:linear-gradient(141deg, #fce6ac 25%, #eee 40%, #fce6ac 45%);
+  color:#a0812c;
+  font-family:'Roboto';
+  font-weight:400;
+  font-size:32px;
+  padding-top:35vh;
+  height:80vh;
+  overflow:hidden;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
 }
 
 </style>

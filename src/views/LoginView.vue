@@ -36,13 +36,13 @@
       <div class="text-center">
         <img class="logo img-fluid" alt="logo" src="../assets/logo/COIN BANK.gif">
         <div class="col">
-          <h2 class="font-monospace text-sm-center">Realizá tus cambios. Acomodá tus ganancias.</h2>
+          <h2>Realizá tus cambios. Acomodá tus ganancias.</h2>
         </div>
       </div>    <!-- a la hora de calcular col-numTanto, suma de los numeros de las columnas no debe ser +12 -->
     </div>
     
     <div style="padding: 2rem" class="col-sm-6">
-      <h3 class="font-monospace text-center">¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
+      <h3 class="text-center">¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
         <form>
           <div>
             <div class="text-center">
@@ -182,6 +182,7 @@ p {
 
 h2 {
   margin-top: 3rem;
+  color: #9b7611;
 }
 
 
