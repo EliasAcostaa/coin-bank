@@ -69,7 +69,7 @@ import TransactionsService from '@/Services/TransaccionesService';
 
   const emitEvent = defineEmits(['update:visible', 'editMove'])
 
-  const editar = async () => {
+  const editar = async () => {   // error en funcion editar???¿¿¿ por que transaccion en modal genera problemas¿¿??
     let ok = false
     if(typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0){
       if (Movimiento.value.action === 'purchase') {
