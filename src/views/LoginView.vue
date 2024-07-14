@@ -1,30 +1,6 @@
 <template>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <div class="container">
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> 
-
-      <ul class="navbar-nav">
-
-        <li class="nav-item">
-          <router-link :to="{name: 'ContactoView'}"      
-            class="nav-link active">Contacto</router-link>
-        </li>
-
-        <li class="nav-item">  
-            <router-link :to="{name: 'SobreNosotrosView'}"      
-            class="nav-link active">Sobre Nosotros</router-link>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
 
   <div class="container">
 
@@ -102,6 +78,7 @@
   import { useUserStore } from '../store/User';
   import { useRouter } from 'vue-router';
   import { ref, computed } from 'vue';
+  
 
   const store = useUserStore();
   const route = useRouter();

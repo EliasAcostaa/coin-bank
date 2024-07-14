@@ -1,20 +1,4 @@
 <template>
-    
-
-<nav v-if="!store.isLogged" class="navbar">
-  <div class="container"> 
-
-    <router-link :to="{name: 'LoginView'}" class="navbar-brand">
-      <img src="../assets/imagenes/home.png" alt="Home" width="40" height="40">
-    </router-link>
-
-    <router-link :to="{name: 'ContactoView'}" class="navbar-brand">
-      <img src="../assets/imagenes/contact-us.png" alt="Contacto" width="40" height="40">
-    </router-link>
-    
-  </div>
-</nav>
-
 
 
 <section>
