@@ -34,23 +34,25 @@
 </template>
 
 <script setup>
-    import { useRouter } from 'vue-router'; 
+    import { useRouter } from 'vue-router';
+    import { useUserStore } from '../store/User'; 
     import { ref, onMounted } from 'vue';
 
     const route = useRouter()
+    const store = useUserStore();
 
     const CurrentRoute = ref('LoginView')
 
     onMounted(() => {
-        if(route.currentRoute.value.name === ''){
-            CurrentRoute.value = 'LoginView' 
+        if(route.currentRoute.value.name === undefined){
+            route.push({name: 'LoginView'})
         }else{
             CurrentRoute.value = route.currentRoute.value.name
+            console.log(CurrentRoute.value)
         }
     })
 
     const cambiar = ref((ruta) => {
         CurrentRoute.value = ruta
-        console.log(CurrentRoute.value)
     })
 </script>
