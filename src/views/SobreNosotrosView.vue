@@ -2,7 +2,7 @@
 
 
 <section>
-<h1 class="text-center">Conectate al futuro de las finanzas con redes de pago innovadoras. Sé creativo. No tengas miedo de pensar fuera de la caja.</h1>
+<h1 class="text-center">Conectate al futuro de las finanzas con redes de pago innovadoras. No tengas miedo de pensar fuera de la caja.</h1>
 </section>
 
 
@@ -20,6 +20,7 @@
   depender de bancos u otras instituciones financieras.
 </h4>
 
+<h3 class="text-center descripcion3">Somos dos programadores entusiastas. Bienvenidos a nuestro proyecto de criptomonedas.</h3>
 
 
 <!-- ICONOS -->
@@ -27,51 +28,40 @@
 
 <div class="servicios"> 
   <section class="servicio"> 
-    <h3>Diseño Web</h3>
+    <h3>Acceso global</h3>
     <div class="iconos">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brush" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M3 21v-4a4 4 0 1 1 4 4h-4" />
-        <path d="M21 3a16 16 0 0 0 -12.8 10.2" />
-        <path d="M21 3a16 16 0 0 1 -10.2 12.8" />
-        <path d="M10.6 9a9 9 0 0 1 4.4 4.4" />
-      </svg>
+      <img src="../assets/imagenes/google-earth.png" width="100">
     </div>
 
-    <p>Somos dos programadores entusiastas. Bienvenidos a nuestro proyecto de criptomonedas.</p>
+    <p>
+      El mercado de criptomonedas es global y opera las 24 horas del día, los 7 días de la semana. 
+      ¡Te integramos al mercado desde cualquier parte del mundo, en cualquier momento, a tu horario adecuado!
+    </p>
           
   </section>
 
   <section class="servicio">
-  <h3>Aplicaciones Web</h3>
+  <h3>Control y comodidad</h3>
     <div class="iconos">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-        <path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-        <path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-        <path d="M14 7l6 0" />
-        <path d="M17 4l0 6" />
-      </svg>
-            
+      <img src="../assets/imagenes/casa.png" width="90">
     </div>
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptas blanditiis nostrum fuga aspernatur.</p>
+    <p>
+      ¡Tenés la posibilidad de manejar tus inversiones como vos querés! No necesitás de bancos o corredores de 
+      bolsa para comprar, vender o intercambiar criptomonedas. Nosotros hacemos el trabajo por vos.
+    </p>
 
   </section>
 
   <section class="servicio">
-    <h3>E-Commerce</h3>
+    <h3>Alto potencial</h3>
       <div class="iconos">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-bag" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z" />
-          <path d="M9 11v-5a3 3 0 0 1 6 0v5" />
-        </svg>
-
+        <img src="../assets/imagenes/crecen-las-criptomonedas.png" width="90">
       </div>
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptas blanditiis nostrum fuga aspernatur.</p>
+    <p>Te ofrecemos emplear monedas populares como Bitcoin, criptomoneda pionera y con mayor capitalización de 
+      mercado; o Ethereum, líder para contratos inteligentes y aplicaciones descentralizadas.
+    </p>
 
   </section>
 
@@ -154,18 +144,19 @@ import { useUserStore } from '../store/User';
 
 .descripcion {
   font-size: 1.8rem;
-  font-style: italic;
+  font-style:oblique;
   margin-bottom: 3rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  color:#af7a07;
 }
 
 .descripcion2 {
   font-size: 1.5rem;
   font-style: italic;
-  margin-bottom: 8rem;
-  padding-left: 7rem;
-  padding-right: 7rem;
+  margin-bottom: 4rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 .navbar {
@@ -214,12 +205,16 @@ h1 {
 
 .descripcion,
 .descripcion2 {
-  animation: slidein 7s;
+  animation: slidein 8s;
   font-family:'Roboto';
   font-weight:400;
   overflow:hidden;
   animation-iteration-count: 1;
 }
 
+.descripcion3 {
+  margin-top: 4rem;
+  margin-bottom: 8rem;
+}
 
 </style>
