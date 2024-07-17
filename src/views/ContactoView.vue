@@ -1,20 +1,4 @@
 <template>
-    
-<nav class="navbar">
-  <div class="container"> 
-
-    <router-link :to="{name: 'LoginView'}" class="navbar-brand">
-      <img src="../assets/imagenes/home.png" alt="Home" width="40" height="40">
-    </router-link>
-
-    <router-link :to="{name: 'SobreNosotrosView'}" class="navbar-brand">
-      <img src="../assets/imagenes/contact-us.png" alt="SobreNosotros" width="40" height="40">
-    </router-link>  
-    
-  </div>
-</nav>
-
-
 
 <h2 class="text-center">¡Envianos tu consulta!</h2>
 <h4 class="text-center">Te escuchamos para poder mejorar tu experiencia en Coin Bank.</h4>
@@ -64,7 +48,9 @@
 
 <script setup>
     import { useRouter } from 'vue-router';
+    import { useUserStore } from '@/store/User';
 
+    const store = useUserStore();
     const router = useRouter();
 
 </script>
@@ -88,7 +74,7 @@ label {
 
 h2 {
   font-family: monospace;
-  padding: 1rem;
+  padding: 2.5rem;
 }
 
 h4 {

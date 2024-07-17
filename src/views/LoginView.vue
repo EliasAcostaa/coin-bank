@@ -1,29 +1,5 @@
 <template>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav"> <!-- centrar enlaces!!!! -->
-
-      <ul class="navbar-nav">
-
-        <li class="nav-item">
-          <router-link :to="{name: 'ContactoView'}"      
-            class="nav-link active">Contacto</router-link>
-        </li>
-
-        <li class="nav-item">  
-            <router-link :to="{name: 'SobreNosotrosView'}"      
-            class="nav-link active">Sobre Nosotros</router-link>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
-
   <div class="container">
 
     <div class="home">
@@ -34,13 +10,13 @@
       <div class="text-center">
         <img class="logo img-fluid" alt="logo" src="../assets/logo/COIN BANK.gif">
         <div class="col">
-          <h2 class="font-monospace text-sm-center">Realizá tus cambios. Acomodá tus ganancias.</h2>
+          <h2>Realizá tus cambios. Acomodá tus ganancias.</h2>
         </div>
       </div>    <!-- a la hora de calcular col-numTanto, suma de los numeros de las columnas no debe ser +12 -->
     </div>
     
     <div style="padding: 2rem" class="col-sm-6">
-      <h3 class="font-monospace text-center">¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
+      <h3 class="text-center">¡Bienvenido a nuestra billetera virtual Coin Bank!</h3>
         <form>
           <div>
             <div class="text-center">
@@ -100,6 +76,7 @@
   import { useUserStore } from '../store/User';
   import { useRouter } from 'vue-router';
   import { ref, computed } from 'vue';
+  
 
   const store = useUserStore();
   const route = useRouter();
@@ -130,6 +107,9 @@
 
 </script>
 
+
+
+
 <style scoped>
 
 .logo {
@@ -150,7 +130,7 @@ img {
 .home {
   max-width: 1000px;
   margin: auto;
-  margin-top: 4rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) */
+  margin-top: 4rem; 
 }
 
 .col {
@@ -177,8 +157,8 @@ p {
 
 h2 {
   margin-top: 3rem;
+  color: #9b7611;
 }
-
 
 
 </style>

@@ -12,33 +12,41 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
 
-            <ul class="navbar-nav">
-                <li class="nav-item">       <!-- router-link...... NO <a> para enlaces!!! -->
-                    <img class="img-fluid" alt="logo" mx-auto src="../assets/imagenes/COIN_BANK-transparente-removebg-preview.png">
-                </li>
-                <li class="nav-item">   
-                    <router-link :to="{name: 'HomeView'}"
-                    class="nav-link">Home</router-link>
-                </li>
-                <li class="nav-item">      
-                    <router-link :to="{name: 'OperarView'}"
-                    class="nav-link">Operar</router-link>
-                </li>
-                <li class="nav-item">      
-                    <router-link :to="{name: 'HistorialView'}"
-                    class="nav-link">Historial</router-link>
-                </li>
-                <li class="nav-item">      
-                    <router-link :to="{name: 'EstadoActualView'}"
-                    class="nav-link">Cuentas</router-link>
-                </li>
-                <li class="nav-link">      
-                    <button class="btn btn-outline-light" type="button" @click="logOut()">Cerrar Sesión</button>
-                </li>
+                <ul class="navbar-nav">
+                    <li class="nav-item">       <!-- router-link...... NO <a> para enlaces!!! -->
+                        <img class="img-fluid" alt="logo" mx-auto src="../assets/imagenes/COIN_BANK-transparente-removebg-preview.png">
+                    </li>
+                    <li class="nav-item">   
+                        <router-link :to="{name: 'HomeView'}"
+                        class="nav-link">Home</router-link>
+                    </li>
+                    <li class="nav-item">      
+                        <router-link :to="{name: 'OperarView'}"
+                        class="nav-link">Operar</router-link>
+                    </li>
+                    <li class="nav-item">      
+                        <router-link :to="{name: 'HistorialView'}"
+                        class="nav-link">Historial</router-link>
+                    </li>
+                    <li class="nav-item">      
+                        <router-link :to="{name: 'EstadoActualView'}"
+                        class="nav-link">Cuentas</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name: 'ContactoView'}"      
+                        class="nav-link">Contacto</router-link>
+                    </li>
+                    <li class="nav-item">  
+                        <router-link :to="{name: 'SobreNosotrosView'}"    
+                        class="nav-link">Sobre Nosotros</router-link>
+                    </li>
+                    <li class="nav-link">      
+                        <button class="btn btn-outline-light" type="button" @click="logOut()">Cerrar Sesión</button>
+                    </li>
                 
-            </ul>
+                </ul>
 
-        </div>
+            </div>
         </div>
 </nav>
 </template>
@@ -58,11 +66,12 @@
 </script>
 
 
+
 <style scoped>
 
 .nav-link {
-    font-size: 1.4rem;
-    margin: 3rem;
+    font-size: 1.2rem;
+    margin: 2.5rem;
 }
 
 img {

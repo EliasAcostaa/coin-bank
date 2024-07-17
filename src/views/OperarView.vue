@@ -33,7 +33,7 @@
                 <div class="row mb-3">
                     <div class="d-grid gap-2 d-xxl">
                         <label class="col-xxl-12 col-form-label" for="Cantidad">Cantidad </label>
-                        <input class="btn btn-dark btn-lg" type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
+                        <input class="btn btn-dark btn-lg" type="number" id="Cantidad" v-model="operacion.crypto_amount">
                     </div>
                 </div>
 
@@ -57,8 +57,8 @@
 
                 <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
                     <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
-                </div>
-
+                </div>  <!-- popover funciona o no? VER -->
+                       <!--data-bs-toggle="popover" data-bs-content="Su contenido de popover aquí"-->
             </form>
         </div>
     </div>
@@ -160,6 +160,7 @@
                 operacion.value.money = (Cotizacion.totalBid * operacion.value.crypto_amount).toFixed(2);
             }
         } else {
+            operacion.value.crypto_amount = 0;
             operacion.value.money = 0;
         }
     };
@@ -186,9 +187,9 @@
 
 
 .container {
-    max-width: 500px; /* VER ESTAS DOS PROPIEDADES PQ INFLUYEN EN LA TABLA Y EL TEXTO DE ARRIBA */
+    max-width: 500px; 
     margin-bottom: 1.5rem;
-    margin-top: 3rem;   /* HACER RESPONSIVO ESTE CAMBIO (mas chico, desacomodado) quitar? tiene algun efecto? */
+    margin-top: 3rem;   
     min-width: 200px;
 }
 
