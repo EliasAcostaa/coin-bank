@@ -16,14 +16,19 @@ describe('Ingreso exitoso / Primer testeo', () => {
 });
 
 
-// segundo testeo: existencia barra de navegacion
+// segundo testeo: existencia barra de navegacion y enlaces
 describe('Test de barra de navegacion', () => {
   it('Verificar barra de navegacion presente', () => {
     cy.visit('http://localhost:8080/');
-    cy.get('.navbar').should('exist');         //como se llamaba el componente navbar de la pag actualizada???
-  })                                          // REVISAR COMPONENTE NAVBAR Y ACTUALIZAR TESTEOS CON PULL?.
+    cy.get('[data-testid="barraNavegacion"]').should('exist');  // data-testid= atributo utilizado para nombrar al 
+  })    
+  
+  it('Verificar enlaces', () => {
+    cy.visit('http://localhost:8080/');
+    cy.get('router-link to: [name:"Contacto"]').should('have.attr', 'href', 'http://localhost:8080/Contacto');
+  })  //ver o dejar comprobacion de enlaces?¿?
 })
-
+  // VER: EXISTE FORMA DE INCLUIR UN COMPONENTE EN LOS TESTEOS?????
 
 
 
