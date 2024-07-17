@@ -6,7 +6,7 @@ context('Cypress APIs', () => {
     beforeEach(() => {
       cy.visit('https://example.cypress.io/cypress-api')
     })
-
+                                                            // ejemplo testeo de api
     // https://on.cypress.io/custom-commands
 
     it('.add() - create a custom command', () => {
