@@ -50,7 +50,7 @@ describe('Testeo menu desplegable', () => {
   }) 
 })
 
-  // VER: EXISTE FORMA DE INCLUIR UN COMPONENTE EN LOS TESTEOS?????
+  // testeos princiaples login terminado
 
 
 

@@ -17,3 +17,4 @@ describe('Prueba de componente', () => {
     cy.get('LoginNavBarComponent').should('exist');
   })
 })
+// FORMA DE INCLUIR UN COMPONENTE EN LOS TESTEOS
