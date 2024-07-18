@@ -16,32 +16,39 @@ describe('Ingreso exitoso / Primer testeo', () => {
 });
 
 
-// segundo testeo: existencia barra de navegacion y enlaces
+// segundo testeo: barra de navegacion 
 describe('Test de barra de navegacion', () => {
   it('Verificar barra de navegacion presente', () => {
     cy.visit('http://localhost:8080/');
-    cy.get('[data-testid="barraNavegacion"]').should('exist');  // data-testid= atributo utilizado para nombrar al 
+    cy.get('[data-testid="barraNavegacion"]').should('exist');  // data-testid= atributo utilizado para nombrar al componente
   })    
-  
-  it('Verificar enlaces de navegación', () => {
+
+  it('Verificar enlaces presentes', () => {
     cy.visit('http://localhost:8080/');
-  
-    // Obtener componentes de navegación
-    const navigationLinks = cy.get('[data-cy="LinkNavegacion"]');
-  
-    // Recorrer cada enlace
-    navigationLinks.each((link) => {
-      // Obtener el nombre del enlace (asumiendo un atributo data-cy)
-      const linkName = link.attr('data-cy');
-  
-      // Simular clic en el enlace
-      cy.get(link).trigger('click');
-  
-      // Verificar la ruta actual
-      cy.location('/Contacto').should('equal', `/${'/Contacto'}`); // Adaptar según sus rutas
-    });
+    cy.get('[data-cy="LinkNavegacion"]').should('exist');  
+  })    
+
+  it('Verificar enlaces con url correcta', () => {
+    cy.visit('http://localhost:8080/');
+    cy.get('[data-testid="NavLink"]').should('have.attr', 'href', '/Contacto'); 
+    cy.get('[data-testid="NavLink2"]').should('have.attr', 'href', '/SobreNosotros'); 
+  }) 
+});  
+
+describe('Testeo menu desplegable', () => {
+
+  beforeEach(() => {
+    cy.viewport(480,  320); // valores de pantalla
   });
-  })  //ver o dejar comprobacion de enlaces?¿?
+
+  it('Menu desplegable visible en resolucion pequeña', () => {
+    cy.visit('http://localhost:8080/');
+    cy.get('.navbar-toggler').click();
+    cy.viewport(480,  320);
+    cy.get('.navbar-toggler').should('be.visible');
+
+  }) 
+})
 
   // VER: EXISTE FORMA DE INCLUIR UN COMPONENTE EN LOS TESTEOS?????
 

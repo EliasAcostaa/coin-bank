@@ -10,11 +10,11 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <router-link :to="{name: 'ContactoView'}" @click="cambiar('ContactoView')" data-cy="LinkNavegacion"    
-                        class="nav-link active">Contacto</router-link>
+                        data-testid="NavLink" class="nav-link active">Contacto</router-link>
                     </li>
                     <li class="nav-item">  
                         <router-link :to="{name: 'SobreNosotrosView'}" @click="cambiar('SobreNosotrosView')" data-cy="LinkNavegacion"    
-                        class="nav-link active">Sobre Nosotros</router-link>
+                        data-testid="NavLink2" class="nav-link active">Sobre Nosotros</router-link>
                     </li>
                 </ul>
             </div>
