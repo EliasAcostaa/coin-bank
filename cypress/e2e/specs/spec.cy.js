@@ -23,11 +23,26 @@ describe('Test de barra de navegacion', () => {
     cy.get('[data-testid="barraNavegacion"]').should('exist');  // data-testid= atributo utilizado para nombrar al 
   })    
   
-  it('Verificar enlaces', () => {
+  it('Verificar enlaces de navegación', () => {
     cy.visit('http://localhost:8080/');
-    cy.get('router-link to: [name:"Contacto"]').should('have.attr', 'href', 'http://localhost:8080/Contacto');
+  
+    // Obtener componentes de navegación
+    const navigationLinks = cy.get('[data-cy="LinkNavegacion"]');
+  
+    // Recorrer cada enlace
+    navigationLinks.each((link) => {
+      // Obtener el nombre del enlace (asumiendo un atributo data-cy)
+      const linkName = link.attr('data-cy');
+  
+      // Simular clic en el enlace
+      cy.get(link).trigger('click');
+  
+      // Verificar la ruta actual
+      cy.location('/Contacto').should('equal', `/${'/Contacto'}`); // Adaptar según sus rutas
+    });
+  });
   })  //ver o dejar comprobacion de enlaces?¿?
-})
+
   // VER: EXISTE FORMA DE INCLUIR UN COMPONENTE EN LOS TESTEOS?????
 
 

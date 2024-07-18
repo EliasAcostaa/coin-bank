@@ -9,11 +9,11 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link :to="{name: 'ContactoView'}" @click="cambiar('ContactoView')"     
+                        <router-link :to="{name: 'ContactoView'}" @click="cambiar('ContactoView')" data-cy="LinkNavegacion"    
                         class="nav-link active">Contacto</router-link>
                     </li>
                     <li class="nav-item">  
-                        <router-link :to="{name: 'SobreNosotrosView'}" @click="cambiar('SobreNosotrosView')"     
+                        <router-link :to="{name: 'SobreNosotrosView'}" @click="cambiar('SobreNosotrosView')" data-cy="LinkNavegacion"    
                         class="nav-link active">Sobre Nosotros</router-link>
                     </li>
                 </ul>
