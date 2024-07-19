@@ -57,11 +57,11 @@
 
                 <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
                     <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
-                </div>  <!-- popover funciona o no? VER -->
-                       <!--data-bs-toggle="popover" data-bs-content="Su contenido de popover aquí"-->
+                </div>  
+                      
             </form>
-        </div>
-    </div>
+        </div>           <!-- REALIZAR POPOVERS!!!!!!!!!!!!!!! ahora que esta arreglado operar-->
+    </div>                              <!-- VER NAVBAR QUE APARECE MAL-->
 
 
   </template>
