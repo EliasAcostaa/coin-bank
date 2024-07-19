@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="row mb-3">  
-                    <div class="d-grid gap-2 d-xxl">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
+                    <div class="d-grid gap-2 d-xxl">    
                     <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
                         <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
                             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
@@ -34,7 +34,7 @@
                     <div class="d-grid gap-2 d-xxl">
                         <label class="col-xxl-12 col-form-label" for="Cantidad">Cantidad </label>
                         <input class="btn btn-dark btn-lg" type="number" id="Cantidad" v-model="operacion.crypto_amount">
-                    </div>
+                    </div>                                           
                 </div>
 
                 <div class="row mb-3">
@@ -85,7 +85,8 @@
     const today = new Date();
     const todayString = today.toISOString().slice(0, 10)
 
-    const realizarMovimiento = async () => {
+    const realizarMovimiento = async (event) => {
+        event.preventDefault();         // DEBERIA ANDAE CON ESTOOOOOOOOO
         if(typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0){
             let resultado = ''
             if (operacion.value.action === 'purchase') {

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-    <div v-if="!cargando"> <!-- le pongo ROW a tabla de HOME para alargarla?????¿¿¿-->
+    <div v-if="!cargando"> 
         <table class="table-responsive table table-bordered-dark table-striped small">
             <thead>
                 <tr class="fs-4">
