@@ -55,9 +55,10 @@
                     </div>
                 </div>
 
-                <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
-                    <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
-                </div>  
+                <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="¡Debes completar los campos antes de realizar la operación!">
+                    <button type="button" class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                </span>
+
                       
             </form>
         </div>           <!-- REALIZAR POPOVERS!!!!!!!!!!!!!!! ahora que esta arreglado operar-->
@@ -73,6 +74,7 @@
     import { useUserStore } from '@/store/User';
     import { useRouter } from 'vue-router';
     import { ref, watch, computed, onMounted} from 'vue';
+    import { Popover } from 'bootstrap';
   
     import GestionService from '@/Services/GestionService';
     import TransactionsService from '@/Services/TransaccionesService';
@@ -116,6 +118,12 @@
             console.log("llena bien todo daleeee" )
         }
     }
+
+    onMounted(() => {
+        // Initialize popovers after mount
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        const popoverList = popoverTriggerList.map(popoverTrigger => new Popover(popoverTrigger))
+    })
 
     const minimo = () => {
         return operacion.value.crypto_amount.toFixed(6)
@@ -219,7 +227,6 @@ label {
 .btn-dark {
     --bs-btn-bg: #000000;
 }
-
 /* PreciosTable es un COMPONENTE, la modificacion se realiza dentro del componente, aca no funcionará. */
 
 
