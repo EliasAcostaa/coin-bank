@@ -41,7 +41,7 @@ class TransactionsService{
             }
         }
         balances.push({ codigo: actual, balance: total });
-
+        
         return balances
     }
 

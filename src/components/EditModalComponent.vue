@@ -1,35 +1,40 @@
 <template>
+  
     <div v-if="visible" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
-        <h2>{{ Movimiento._id }}</h2>
+        <h2 class="titulo">{{ Movimiento._id }}</h2>
         <div>
-          <label for="accion">Tipo de Transaccion:</label>
-          <select id="accion" v-model="Movimiento.action">
+          <label class="form-label col-6" for="accion">Transacción</label>
+          <select class="text-center col-5" id="accion" v-model="Movimiento.action">
             <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
           </select>
         </div>
         <div>
-          <label for="Moneda">CriptoMoneda:</label>
-          <select id="Moneda" v-model="Movimiento.crypto_code">
+          <label class="form-label col-6" for="Moneda">CriptoMoneda</label>
+          <select class="text-center col-6" id="Moneda" v-model="Movimiento.crypto_code">
             <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
           </select>
         </div>
         <div>
-          <label for="Cantidad">Cantidad</label>
-          <input type="number" id="Cantidad" v-model="Movimiento.crypto_amount">
+          <label class="form-label col-5" for="Cantidad">Cantidad</label>
+          <input class="text-center col-5" type="number" id="Cantidad" v-model="Movimiento.crypto_amount">
+        </div>
+        <div class="text-center" style="margin-top: 1.5rem;">
+          <p class="text-center"> Total ar$ {{ Movimiento.money }}</p>
         </div>
         <div>
-          <p>total ar$ {{ Movimiento.money }}</p>
+          <p class="text-center" style="margin-bottom: 2rem;"> Fecha: {{ formatearFecha(Movimiento.datetime) }}</p>
         </div>
-        <div>
-          <p>fecha: {{ formatearFecha(Movimiento.datetime) }}</p>
+
+        <div class="row">
+        <div class="col-6">
+          <button class="btn btn-warning" id="botonEditar" @click="editar">Editar</button>
         </div>
-        <div>
-          <button id="botonEditar" @click="editar">Editar</button>
+        <div class="col-6">
+          <button class="btn btn-warning" id="botonCerrar" @click="closeModal">Cancelar</button>
         </div>
-        <div>
-          <button id="botonCerrar" @click="closeModal">Cancelar</button>
-        </div>
+      </div>
+
       </div>
     </div>
 </template>
@@ -64,18 +69,20 @@ import TransactionsService from '@/Services/TransaccionesService';
 
   const emitEvent = defineEmits(['update:visible', 'editMove'])
 
-  const editar = async () => {
+  const editar = async () => {   // error en funcion editar???¿¿¿ por que transaccion en modal genera problemas¿¿??
     let ok = false
     if(typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0){
       if (Movimiento.value.action === 'purchase') {
         ok = true
       }else{
-        const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === Movimiento.value.crypto_code)
-        if(moneda){
-          if(Movimiento.value.crypto_amount <= moneda.balance){
-            ok = true
-          }else{
-            console.log("el monto debe ser menor a la exitencia")
+        if(TransactionsS.getEstadoCuenta().length > 0 ){
+          const moneda = TransactionsS.getEstadoCuenta().find(coin => coin.codigo === Movimiento.value.crypto_code)
+          if(moneda){
+            if(Movimiento.value.crypto_amount <= moneda.balance){
+              ok = true
+            }else{
+              console.log("el monto debe ser menor a la exitencia")
+            }
           }
         }
       } 
@@ -93,13 +100,18 @@ import TransactionsService from '@/Services/TransaccionesService';
 
   }
 
+  const minimo = () => {
+        return Movimiento.value.crypto_amount.toFixed(6)
+  }
+
   const updateTotal = async () => {
     if (typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0) {
+      Movimiento.value.crypto_amount = parseFloat(minimo())
       const Cotizacion = await GestionS.getCotizacion(Movimiento.value.crypto_code);
       if (Movimiento.value.action === 'purchase') {
-        Movimiento.value.money = Cotizacion.totalAsk * Movimiento.value.crypto_amount;
+        Movimiento.value.money = (Cotizacion.totalAsk * Movimiento.value.crypto_amount).toFixed(2);
       } else {
-        Movimiento.value.money = Cotizacion.totalBid * Movimiento.value.crypto_amount;
+        Movimiento.value.money = (Cotizacion.totalBid * Movimiento.value.crypto_amount).toFixed(2);
       }
     } else {
       Movimiento.value.money = 0;
@@ -123,43 +135,38 @@ import TransactionsService from '@/Services/TransaccionesService';
   watch(Movimiento.value, updateTotal)
 </script>
 
+
+
+
 <style scoped>
+
   .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  input, select {
-    color: #000000;
-    background-color: rgba(161, 69, 69, 0.767);
-  }
-  
   .modal-content {
-    background: rgba(161, 69, 69, 0.767);
-    padding: 15px;
-    border-radius: 10%;
-    min-width: 300px;
+    background: rgb(252, 252, 252);
+    padding: 20px;
+    max-width: 300px;
     position: relative;
-    border: 5px solid #000000;
+    border: 2px solid #000000;
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #000000;
+    font-weight: bold;
   }
 
-  #botonCerrar {
-    color:#ffffff;
-    padding: 5px;
-    background-color: rgb(5, 10, 71);
-    border: solid rgb(2, 2, 48);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 10rem;
+
+  .titulo {
+    font-size: 1.2rem;
+    font-weight: bolder;     /* num de id */
   }
 
   </style>

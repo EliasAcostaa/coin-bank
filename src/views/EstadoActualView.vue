@@ -1,17 +1,19 @@
 <template>
+    <div class="container">
     <div v-if="store.isLogged">
-        <h3>Estado actual</h3>
+        <h3 class="text-center">Estado actual</h3>
         <div v-if="!cargando">
             <div v-if="balances.length !== 0">
-                <table>
+                <div class="table-responsive">
+                <table class="table table-bordered-dark table-striped small">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>CriptoMoneda</th>
                             <th>Cantidad</th>
                             <th>Dinero</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         <tr v-for="(moneda, index) in balances" :key="index">
                             <td>{{ nombreMoneda(moneda.codigo).nombre }}</td>
                             <td>{{ moneda.balance }}</td>
@@ -19,21 +21,18 @@
                         </tr>
                     </tbody>
                 </table>
-                <p> Total de dinero en cuenta: ${{ totalFinal }}</p>
+            </div>
+                <p class="total fs-4 text-center"> Total de dinero en cuenta: ${{ totalFinal }}</p>
             </div>
             <div v-else>
-                <p>¡La cuenta se encuentra vacía!</p>
+                <p class="fs-4 text-center">¡La cuenta se encuentra vacía!</p>
             </div>
         </div>
         <div v-else>
-            <p>Cargando balance, estamos trabajando...</p>
+            <p class="fs-4 text-center">¡Cargando Balance! Estamos trabajando...</p>
         </div>
     </div>
-    <div v-else>
-        <h3>Para poder visualizar los balances... ¡Debe iniciar sesión!</h3>
-        <button @click="Login()">Iniciar Sesión</button>
     </div>
-    
 </template>
 
 <script setup>
@@ -55,6 +54,9 @@
     
     onMounted(async () => {
         await recargar()
+        if (!store.isLogged) {
+            router.push({name: 'LoginView'})
+        } 
     })
 
     const recargar = async () => {
@@ -83,12 +85,39 @@
         return totales
     })
 
-    const Login = () => {
-        router.push({name: 'LoginView'})
-    }
-
     const nombreMoneda = (codigo) => {
         return GestionS.getMonedas().find(moneda => moneda.codigo === codigo)
     }
 
 </script>
+
+
+
+<style scoped>
+
+h3 {
+    font-family:monospace;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+table {
+    font-size: 1.5rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+td {
+    align-content: center;
+}
+
+.total {
+    margin-top: 5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+</style>
+
+
+
+
+

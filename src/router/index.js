@@ -4,6 +4,8 @@ import HomeView from '../views/HomeView.vue'
 import OperarView from '../views/OperarView.vue'
 import HistorialView from '../views/HistorialView.vue'
 import EstadoActualView from '../views/EstadoActualView.vue'
+import SobreNosotrosView from '@/views/SobreNosotrosView.vue'
+import ContactoView from '@/views/ContactoView.vue'
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: '/Balances',
     name: 'EstadoActualView',
     component: EstadoActualView
+  },
+  {
+    path: '/SobreNosotros',
+    name: 'SobreNosotrosView',
+    component: SobreNosotrosView
+  },
+  {
+    path: '/Contacto',
+    name: 'ContactoView',
+    component: ContactoView
   }
 ]
 

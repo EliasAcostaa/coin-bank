@@ -1,52 +1,92 @@
 <template>
     <div v-if="store.isLogged">
-        <h3>Opere y genere movimientos dentro de su cartera</h3>
-        <form>
-            <div>
-                <label for="TipoOperacion">Seleccione el tipo de operacion </label>
-                <select id="TipoOperacion" v-model="operacion.action">
-                    <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
-                </select>
-            </div>
-            <div>
-                <label for="Moneda">Seleccione una moneda </label>
-                <select id="Moneda" v-model="operacion.crypto_code">
-                    <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
-                </select>
-            </div>
-            <div>
-                <label for="Cantidad">Cantidad </label>
-                <input type="number" id="Cantidad" min="0.000001" v-model="operacion.crypto_amount">
-            </div>
-            <div>
-                <p>Total ar$ {{ operacion.money }}</p>
-            </div>
-            <div>
-                <label for="Fecha">Fecha </label>
-                <input type="date" id="Fecha" v-model="date.fecha" :max="todayString">
-            </div>
-            <div>
-                <label for="Hora">Hora </label>
-                <input type="time" id="Hora" v-model="date.hora">
-            </div>
-        </form>
-        <div>
-            <button @click="realizarMovimiento">{{ opp.nombre }}</button>
-        </div>
+        <h3 class="text-center">¡Opere y genere movimientos dentro de su cartera!</h3>
+            
+        <div class="container">
+            <form class="text-center">
+
+                <h3 class="exchange">Exchange actual {{ store.exchange }}</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered-dark table-striped small">
+                        <PreciosTable></PreciosTable>
+                    </table>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="d-grid gap-2 d-xxl">
+                    <label class="col-xxl-12 col-form-label" for="TipoOperacion">Seleccione el tipo de operación </label>
+                    <select class="btn btn-dark btn-lg dropdown-toggle" id="TipoOperacion" v-model="operacion.action">
+                        <option v-for="operacion in GestionS.getOperaciones()" :key="operacion.opcion" :value="operacion.opcion">{{ operacion.nombre }}</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">  
+                    <div class="d-grid gap-2 d-xxl">   
+                        <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
+                        <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Recuerde que primero debe comprar monedas para poder venderlas.">
+                            <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
+                                <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="d-grid gap-2 d-xxl">
+                        <label class="col-xxl-12 col-form-label" for="Cantidad">Cantidad </label>
+                        <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="El monto debe ser menor a la existencia en Cuentas.">
+                            <input class="btn btn-dark btn-lg" type="number" id="Cantidad" v-model="operacion.crypto_amount">
+                        </span>
+                    </div>                                           
+                </div>
+
+                <div class="row mb-3">
+                    <p class="col-xxl-12 col-form-label text-center fs-3">Total ar$ {{ operacion.money }}</p>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="d-grid gap-2 d-xxl">
+                        <label class="col-xxl-12 col-form-label" for="Fecha">Fecha </label>
+                        <input class="btn btn-dark btn-lg" type="date" id="Fecha" v-model="date.fecha" :max="todayString">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="d-grid gap-2 d-xxl">
+                        <label class="col-xxl-12 col-form-label" for="Hora">Hora </label>
+                        <input class="btn btn-dark btn-lg" type="time" id="Hora" v-model="date.hora">
+                    </div>
+                </div>
+
+                <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="¡Debes completar los campos antes de realizar la operación!">
+                    <button type="button" class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                </span>
+
+            </form>
+        </div>          
+    </div>           
+    
+    <div style="display: none" id="alerta" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" id="cruz" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h5>Perfecto! La operación ha sido realizada con éxito.</h5>
     </div>
-    <div v-else>
-      <h3>Para poder vender y comprar en nuestra página... ¡Debe iniciar sesión!</h3>
-      <button @click="Login">Iniciar Sesión</button>
-    </div>
+
+
   </template>
   
+
+
+
   <script setup>
     import { useUserStore } from '@/store/User';
     import { useRouter } from 'vue-router';
     import { ref, watch, computed, onMounted} from 'vue';
+    import { Popover } from 'bootstrap';
   
     import GestionService from '@/Services/GestionService';
     import TransactionsService from '@/Services/TransaccionesService';
+    import PreciosTable from '@/components/PreciosTable.vue'
   
     const store = useUserStore();
     const router = useRouter();
@@ -55,13 +95,19 @@
     const today = new Date();
     const todayString = today.toISOString().slice(0, 10)
 
-    const realizarMovimiento = async () => {
+    const realizarMovimiento = async (event) => {
+        event.preventDefault();         
         if(typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0){
             let resultado = ''
-            console.log(operacion.value)
             if (operacion.value.action === 'purchase') {
                 resultado = await TransactionsS.postMovimiento({...operacion.value})
+
                 console.log("estatus " + resultado)
+                if (resultado === true) {
+                    const alerta = document.getElementById('alerta');
+                    alerta.style.display = 'block';     // Mostrar la alerta  se muestra para comprar nomas?????
+                    //alert("¡Operación realizada con éxito!");                     al vender no se muestra??
+}
                     //hacer cartel de como salio la accion(hablar css)
             }else{
                 await TransactionsS.fetchTransactions()
@@ -71,7 +117,7 @@
                         if(operacion.value.crypto_amount <= moneda.balance){
                             resultado = await TransactionsS.postMovimiento({...operacion.value})
                             console.log("estatus " + resultado)
-                            //hacer cartel de como salio la accion(hablar css)
+                            //hacer cartel de como salio la accion(hablar css) 
                         }else{
                             console.log("el monto debe ser menor a la exitencia")
                         }
@@ -86,6 +132,11 @@
             console.log("llena bien todo daleeee" )
         }
     }
+
+    onMounted(() => {
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        const popoverList = popoverTriggerList.map(popoverTrigger => new Popover(popoverTrigger))
+    })
 
     const minimo = () => {
         return operacion.value.crypto_amount.toFixed(6)
@@ -113,8 +164,13 @@
     }
 
     onMounted(() => {
+        if (!store.isLogged) {
+            router.push({name: 'LoginView'})
+        } 
         updateFecha()
     })
+
+
   
     const updateTotal = async () => {
         if (typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0) {
@@ -126,6 +182,7 @@
                 operacion.value.money = (Cotizacion.totalBid * operacion.value.crypto_amount).toFixed(2);
             }
         } else {
+            operacion.value.crypto_amount = 0;
             operacion.value.money = 0;
         }
     };
@@ -138,12 +195,100 @@
       money: 0,
       datetime: ''
     });
-  
-    const Login = () => {
-      router.push({ name: 'LoginView' });
-    };
 
     watch(date.value, updateFecha)
   
     watch(operacion.value, updateTotal);
+
   </script>
+
+  
+
+
+<style scoped>
+
+#cruz {
+    top: 2rem;
+}
+
+#alerta {
+    min-width: 180px;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    right: 40%;
+    width: 20%;
+    height: 20%;
+    display:flex;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+}
+
+h5 {
+    max-width: 300px;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000000;
+  }
+
+.container {
+    max-width: 500px; 
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;   
+    min-width: 200px;
+}
+
+
+button {
+    padding: 0.5rem;
+    margin-top: 4rem;
+    font-size: 1.3rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h3 {
+    margin-top: 3rem;
+}
+
+.exchange {
+    margin-top: 1rem;
+    margin-bottom: -0.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+label {
+    font-size: 1.4rem;
+}
+
+.btn-dark {
+    --bs-btn-bg: #000000;
+}
+
+#Moneda {
+    width: 30rem;
+}
+
+/* Media queries para botones modificados por popovers */
+@media (max-width: 576px) {
+  #Moneda {
+    width: calc(100% - 20px); 
+  }
+}
+
+@media (max-width: 576px) {
+  #Cantidad {
+    width: calc(100% - 20px); 
+  }
+}
+
+@media (max-width: 576px) {
+  #Cantidad {
+    width: calc(100% - 20px); 
+  }
+}
+
+</style>
+
+
+
+

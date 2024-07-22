@@ -1,13 +1,13 @@
 <template>
     <div v-if="visible" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
-        <h2>{{ props.movimiento._id }}</h2>
-        <p>Tipo de Transaccion: {{ nombreOp(props.movimiento.action).nombre }}</p>
+        <h2 class="titulo">{{ props.movimiento._id }}</h2>
+        <p>Transaccion: {{ nombreOp(props.movimiento.action).nombre }}</p>
         <p>CriptoMoneda: {{ nombreMoneda(props.movimiento.crypto_code).nombre }}</p>
-        <p>cantidad: {{ props.movimiento.crypto_amount }}</p>
-        <p>total: ${{ props.movimiento.money }}</p>
-        <p>fecha: {{ props.movimiento.datetime }}</p>
-        <button id="botonCerrar" @click="closeModal">Cerrar</button>
+        <p>Cantidad: {{ props.movimiento.crypto_amount }}</p>
+        <p>Total: ${{ props.movimiento.money }}</p>
+        <p>Fecha: {{ props.movimiento.datetime }}</p>
+        <button class="btn btn-warning" id="botonCerrar" @click="closeModal">Cerrar</button>
       </div>
     </div>
 </template>
@@ -51,31 +51,28 @@ import GestionService from '@/Services/GestionService';
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .modal-content {
-    background: rgba(161, 69, 69, 0.767);
-    padding: 15px;
-    border-radius: 10%;
-    min-width: 300px;
+    background: rgb(252, 252, 252);
+    padding: 20px;
+    max-width: 300px;
     position: relative;
-    border: 5px solid #000000;
+    border: 2px solid #000000;
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #000000;
+    font-weight: bold;
   }
 
-  #botonCerrar {
-    color:#ffffff;
-    padding: 5px;
-    background-color: rgb(5, 10, 71);
-    border: solid rgb(2, 2, 48);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 10rem;
+
+  .titulo {
+    font-size: 1.2rem;
+    font-weight: bolder;     /* num de id */
+    margin-bottom: 2rem;
   }
 
   </style>

@@ -1,44 +1,48 @@
 <template>
+    <div class="container">
     <div v-if="store.isLogged">
-        <h3>Historial de Movimientos</h3>
+        <h3 class="text-center">Historial de Movimientos</h3>
         <div v-if="!cargando">
-            <table v-if="movimientos.length !== 0">
+            <div class="table-responsive">
+            <table class="table table-bordered-dark table-striped small" v-if="movimientos.length !== 0">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Número de movimiento</th>
                         <th>Tipo de movimiento</th>
-                        <th>CriptoMoneda</th>
+                        <th>CriptoMoneda</th>           
                         <th>Cantidad</th>
                         <th>Total</th>
                         <th>Fecha y Hora</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(movimiento, index) in movimientos" :key="index">
+                    <tr class="text-center" v-for="(movimiento, index) in movimientos" :key="index">
                         <td>{{ movimiento._id }}</td>
                         <td>{{ nombreOp(movimiento.action).nombre }}</td>
                         <td>{{ nombreMoneda(movimiento.crypto_code).nombre }}</td>
                         <td>{{ movimiento.crypto_amount }}</td>
                         <td>${{ movimiento.money }}</td>
                         <td>{{ formatearFecha(movimiento.datetime) }}</td>
-                        <td><button @click="abrirModal(movimiento)" >mas info</button></td>
-                        <td><button @click="abrirEditar({...movimiento})">Editar</button></td>
-                        <td><button @click="Eliminar(movimiento._id)">Eliminar</button></td>
+                        <td><button class="p-3 bg-dark btn btn-dark d-grid gap-1 col-12 mx-auto" @click="abrirModal(movimiento)" >Info</button></td>
+                        <td><button class="p-3 bg-dark btn btn-dark d-grid gap-1 col-12 mx-auto" @click="abrirEditar({...movimiento})">Editar</button></td>
+                        <td><button class="p-3 bg-dark btn btn-dark d-grid gap-1 col-12 mx-auto" @click="Eliminar(movimiento._id)">Eliminar</button></td>
                     </tr>
                     <InfoModal v-if="showModal" :visible="showModal" :movimiento="movimientoActual" @update:visible="showModal = $event" />
                     <EditModal v-if="showEdit" :visible="showEdit" :movimiento="movimientoActual" @update:visible="showEdit = $event" @edit-move="editMove"/>
                 </tbody>
             </table>
-            <p v-else>No se registran movimientos anteriores.</p>
+            
+            <p v-else class="fs-4 text-center">No se registran movimientos anteriores.</p>
         </div>
+    </div>
         <div v-else>
-            <p>Cargando historial, estamos trabajando...</p>
+            <p class="fs-4 text-center">¡Cargando Historial! Estamos trabajando...</p>
         </div>
     </div>
-    <div v-else>
-        <h3>Para poder visualizar los movimientos... ¡Debe iniciar sesión!</h3>
-        <button @click="Login()">Iniciar Sesión</button>
     </div>
+
+    
+
     
 </template>
 
@@ -72,6 +76,9 @@
     const GestionS = new GestionService()
     
     onMounted(async () => {
+        if (!store.isLogged) {
+            router.push({name: 'LoginView'})
+        } 
         await recargar()
     })
 
@@ -88,12 +95,8 @@
     }
 
     const Eliminar = async (id) => {
-        TransactionsS.deleteMovimiento(id)
+        await TransactionsS.deleteMovimiento(id)
         await recargar()
-    }
-
-    const Login = () => {
-        router.push({name: 'LoginView'})
     }
 
     const abrirModal = (movimiento) => {
@@ -108,7 +111,7 @@
     }
 
     const editMove = async (movimientoE) => {
-        TransactionsS.editMovimiento(movimientoE)
+        await TransactionsS.editMovimiento(movimientoE)
         await recargar()
     }
 
@@ -132,3 +135,24 @@
 
     
 </script>
+
+
+
+<style scoped>
+
+h3 {
+    font-family:monospace;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+table {
+    font-size: 1.3rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+</style>
+
+
+
+
