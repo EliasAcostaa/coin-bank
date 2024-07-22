@@ -9,7 +9,7 @@
                     <tr class="text-center">
                         <th>Número de movimiento</th>
                         <th>Tipo de movimiento</th>
-                        <th>CriptoMoneda</th>           <!-- editar componentes MODAL-->
+                        <th>CriptoMoneda</th>           
                         <th>Cantidad</th>
                         <th>Total</th>
                         <th>Fecha y Hora</th>
@@ -40,6 +40,10 @@
         </div>
     </div>
     </div>
+
+    
+
+    
 </template>
 
 <script setup>

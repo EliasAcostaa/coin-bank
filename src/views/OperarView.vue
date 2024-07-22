@@ -22,19 +22,23 @@
                 </div>
 
                 <div class="row mb-3">  
-                    <div class="d-grid gap-2 d-xxl">    <!-- quitar el "d-" y "block" ???¿¿¿ -->
-                    <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
-                        <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
-                            <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
-                        </select>
+                    <div class="d-grid gap-2 d-xxl">   
+                        <label class="col-xxl-12 col-form-label" for="Moneda">Seleccione una moneda </label>
+                        <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Recuerde que primero debe comprar monedas para poder venderlas.">
+                            <select class="btn btn-dark btn-lg dropdown-toggle" id="Moneda" v-model="operacion.crypto_code">
+                                <option v-for="moneda in GestionS.getMonedas()" :key="moneda.codigo" :value="moneda.codigo">{{ moneda.nombre }}</option>
+                            </select>
+                        </span>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="d-grid gap-2 d-xxl">
                         <label class="col-xxl-12 col-form-label" for="Cantidad">Cantidad </label>
-                        <input class="btn btn-dark btn-lg" type="number" id="Cantidad" v-model="operacion.crypto_amount">
-                    </div>
+                        <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="El monto debe ser menor a la existencia en Cuentas.">
+                            <input class="btn btn-dark btn-lg" type="number" id="Cantidad" v-model="operacion.crypto_amount">
+                        </span>
+                    </div>                                           
                 </div>
 
                 <div class="row mb-3">
@@ -55,12 +59,17 @@
                     </div>
                 </div>
 
-                <div>       <!-- popover no funciona. por que? falta linea de js de bootstrap?-->
-                    <button class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
-                </div>  <!-- popover funciona o no? VER -->
-                       <!--data-bs-toggle="popover" data-bs-content="Su contenido de popover aquí"-->
+                <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="¡Debes completar los campos antes de realizar la operación!">
+                    <button type="button" class="d-grid gap-2 col-6 mx-auto btn btn-dark" @click="realizarMovimiento">{{ opp.nombre }}</button>
+                </span>
+
             </form>
-        </div>
+        </div>          
+    </div>           
+    
+    <div style="display: none" id="alerta" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" id="cruz" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h5>Perfecto! La operación ha sido realizada con éxito.</h5>
     </div>
 
 
@@ -73,6 +82,7 @@
     import { useUserStore } from '@/store/User';
     import { useRouter } from 'vue-router';
     import { ref, watch, computed, onMounted} from 'vue';
+    import { Popover } from 'bootstrap';
   
     import GestionService from '@/Services/GestionService';
     import TransactionsService from '@/Services/TransaccionesService';
@@ -85,12 +95,19 @@
     const today = new Date();
     const todayString = today.toISOString().slice(0, 10)
 
-    const realizarMovimiento = async () => {
+    const realizarMovimiento = async (event) => {
+        event.preventDefault();         
         if(typeof Number(operacion.value.crypto_amount) === 'number' && operacion.value.crypto_amount > 0){
             let resultado = ''
             if (operacion.value.action === 'purchase') {
                 resultado = await TransactionsS.postMovimiento({...operacion.value})
+
                 console.log("estatus " + resultado)
+                if (resultado === true) {
+                    const alerta = document.getElementById('alerta');
+                    alerta.style.display = 'block';     // Mostrar la alerta  se muestra para comprar nomas?????
+                    //alert("¡Operación realizada con éxito!");                     al vender no se muestra??
+}
                     //hacer cartel de como salio la accion(hablar css)
             }else{
                 await TransactionsS.fetchTransactions()
@@ -100,7 +117,7 @@
                         if(operacion.value.crypto_amount <= moneda.balance){
                             resultado = await TransactionsS.postMovimiento({...operacion.value})
                             console.log("estatus " + resultado)
-                            //hacer cartel de como salio la accion(hablar css)
+                            //hacer cartel de como salio la accion(hablar css) 
                         }else{
                             console.log("el monto debe ser menor a la exitencia")
                         }
@@ -115,6 +132,11 @@
             console.log("llena bien todo daleeee" )
         }
     }
+
+    onMounted(() => {
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        const popoverList = popoverTriggerList.map(popoverTrigger => new Popover(popoverTrigger))
+    })
 
     const minimo = () => {
         return operacion.value.crypto_amount.toFixed(6)
@@ -185,6 +207,29 @@
 
 <style scoped>
 
+#cruz {
+    top: 2rem;
+}
+
+#alerta {
+    min-width: 180px;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    right: 40%;
+    width: 20%;
+    height: 20%;
+    display:flex;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+}
+
+h5 {
+    max-width: 300px;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000000;
+  }
 
 .container {
     max-width: 500px; 
@@ -219,8 +264,28 @@ label {
     --bs-btn-bg: #000000;
 }
 
-/* PreciosTable es un COMPONENTE, la modificacion se realiza dentro del componente, aca no funcionará. */
+#Moneda {
+    width: 30rem;
+}
 
+/* Media queries para botones modificados por popovers */
+@media (max-width: 576px) {
+  #Moneda {
+    width: calc(100% - 20px); 
+  }
+}
+
+@media (max-width: 576px) {
+  #Cantidad {
+    width: calc(100% - 20px); 
+  }
+}
+
+@media (max-width: 576px) {
+  #Cantidad {
+    width: calc(100% - 20px); 
+  }
+}
 
 </style>
 
