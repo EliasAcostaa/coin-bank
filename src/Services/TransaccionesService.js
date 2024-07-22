@@ -47,7 +47,8 @@ class TransactionsService{
 
     async deleteMovimiento(id){
         try{
-            await apiClient.delete(`/transactions/${id}`)
+            const response = await apiClient.delete(`/transactions/${id}`)
+            return (response.status >= 200 && response.status < 300)
         }catch(error){
             console.log(error)
         }
@@ -55,7 +56,8 @@ class TransactionsService{
 
     async editMovimiento(movimientoE){
         try{
-            await apiClient.patch(`/transactions/${movimientoE._id}`, movimientoE)
+            const response = await apiClient.patch(`/transactions/${movimientoE._id}`, movimientoE)
+            return (response.status >= 200 && response.status < 300)
         }catch(error){
             console.log(error)
         } 
@@ -64,11 +66,7 @@ class TransactionsService{
     async postMovimiento(movimiento){
         try{
             const response = await apiClient.post('/transactions', movimiento)
-            if (response.status >= 200 && response.status < 300) {
-                return true;
-            } else {
-                return false;
-            }
+            return (response.status >= 200 && response.status < 300) 
         }catch(error){
             console.log(error)
         }
@@ -79,6 +77,7 @@ class TransactionsService{
             const store = useUserStore()
             const response = await apiClient.get(`/transactions?q={"user_id": "${store.userName}"}`)
             this.movimientos.value = response.data
+            return (response.status >= 200 && response.status < 300)
         }catch(error){
             console.log(error)
         }

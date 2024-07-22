@@ -33,6 +33,10 @@
             </table>
             
             <p v-else class="fs-4 text-center">No se registran movimientos anteriores.</p>
+            <div style="display: none" id="alerta" class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" id="cruz" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <h5>{{ mensaje }}</h5>
+            </div>
         </div>
     </div>
         <div v-else>
@@ -59,6 +63,7 @@
     let movimientos = ref([])
     let showModal = ref(false)
     let showEdit = ref(false)
+    let resultado = false
 
     const movimientoActual = ref({
         _id: '',
@@ -74,6 +79,7 @@
     const router = useRouter()
     const TransactionsS = new TransactionsService()
     const GestionS = new GestionService()
+    const mensaje = ref("")
     
     onMounted(async () => {
         if (!store.isLogged) {
@@ -85,8 +91,13 @@
     const recargar = async () => {
         try{
             cargando.value = true
-            await TransactionsS.fetchTransactions()
+            resultado = await TransactionsS.fetchTransactions()
             movimientos.value = TransactionsS.getMovimientos()
+            if(!resultado) {
+                 mensaje.value = "Error al conectar con el servidor" 
+                 const alerta = document.getElementById('alerta');
+                 alerta.style.display = 'block'; 
+            }
         }catch(error){
             console.log(error)
         }finally{
@@ -95,7 +106,14 @@
     }
 
     const Eliminar = async (id) => {
-        await TransactionsS.deleteMovimiento(id)
+        resultado = await TransactionsS.deleteMovimiento(id)
+        if(resultado) {
+            mensaje.value = "Transaccion eliminada con exito" 
+        }else{
+            mensaje.value = "Error al conectar con el servidor"
+        }
+        const alerta = document.getElementById('alerta');
+        alerta.style.display = 'block';
         await recargar()
     }
 
@@ -111,7 +129,14 @@
     }
 
     const editMove = async (movimientoE) => {
-        await TransactionsS.editMovimiento(movimientoE)
+        resultado = await TransactionsS.editMovimiento(movimientoE)
+        if(resultado) {
+            mensaje.value = "Transaccion modificada con exito" 
+        }else{
+            mensaje.value = "Error al conectar con el servidor"
+        }
+        const alerta = document.getElementById('alerta');
+        alerta.style.display = 'block';
         await recargar()
     }
 
@@ -139,6 +164,19 @@
 
 
 <style scoped>
+
+#alerta {
+    min-width: 180px;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    right: 40%;
+    width: 20%;
+    height: 20%;
+    display:flex;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+}
 
 h3 {
     font-family:monospace;
