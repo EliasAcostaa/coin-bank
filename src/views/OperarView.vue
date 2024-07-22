@@ -69,7 +69,7 @@
     
     <div style="display: none" id="alerta" class="alert alert-success alert-dismissible fade show" role="alert">
         <button type="button" id="cruz" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <h5>Perfecto! La operación ha sido realizada con éxito.</h5>
+        <h5>{{ mensaje}}</h5>
     </div>
 
 
@@ -94,6 +94,7 @@
     const TransactionsS = new TransactionsService()
     const today = new Date();
     const todayString = today.toISOString().slice(0, 10)
+    const mensaje = ref("")
 
     const realizarMovimiento = async (event) => {
         event.preventDefault();         
@@ -102,13 +103,12 @@
             if (operacion.value.action === 'purchase') {
                 resultado = await TransactionsS.postMovimiento({...operacion.value})
 
-                console.log("estatus " + resultado)
                 if (resultado === true) {
-                    const alerta = document.getElementById('alerta');
-                    alerta.style.display = 'block';     // Mostrar la alerta  se muestra para comprar nomas?????
-                    //alert("¡Operación realizada con éxito!");                     al vender no se muestra??
-}
-                    //hacer cartel de como salio la accion(hablar css)
+                    mensaje.value = "Perfecto! La compra ha sido realizada con éxito."
+                }else{
+                    mensaje.value = "Opss! Hubo un error al realizar el movimiento."
+                }
+                  
             }else{
                 await TransactionsS.fetchTransactions()
                 if(TransactionsS.getEstadoCuenta().length > 0 ){
@@ -117,20 +117,24 @@
                         if(operacion.value.crypto_amount <= moneda.balance){
                             resultado = await TransactionsS.postMovimiento({...operacion.value})
                             console.log("estatus " + resultado)
-                            //hacer cartel de como salio la accion(hablar css) 
+                            if (resultado === true) {
+                                mensaje.value = "Perfecto! La venta ha sido realizada con éxito."
+                            }else{
+                                mensaje.value = "Opss! Hubo un error al realizar el movimiento."
+                            }
                         }else{
-                            console.log("el monto debe ser menor a la exitencia")
+                            mensaje.value = "El monto debe ser menor a la existencia de esta moneda"
                         }
                     }
                 }else{
-                    //hacer cartel de que se necesita tener de esa moneda para poder vender(hablar css)
-                    console.log("primero debe comprar")
+                    mensaje.value = "Primero debe comprar esta moneda para poder vender"
                 }
             } 
         }else{
-            //hacer cartel de llenar todo bien(hablar css)
-            console.log("llena bien todo daleeee" )
+            mensaje.value = "Rellene correctamente los campos" 
         }
+        const alerta = document.getElementById('alerta');
+        alerta.style.display = 'block';  
     }
 
     onMounted(() => {

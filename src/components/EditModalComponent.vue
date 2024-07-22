@@ -36,6 +36,11 @@
       </div>
 
       </div>
+
+      <div style="display: none" id="alerta" class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" id="cruz" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <h5>{{ mensaje}}</h5>
+      </div>
     </div>
 </template>
 
@@ -67,10 +72,13 @@ import TransactionsService from '@/Services/TransaccionesService';
     datetime: props.movimiento.datetime
   })
 
+  const mensaje = ref("")
+
   const emitEvent = defineEmits(['update:visible', 'editMove'])
 
-  const editar = async () => {   // error en funcion editar???¿¿¿ por que transaccion en modal genera problemas¿¿??
+  const editar = async () => { 
     let ok = false
+    await TransactionsS.fetchTransactions()
     if(typeof Number(Movimiento.value.crypto_amount) === 'number' && Movimiento.value.crypto_amount > 0){
       if (Movimiento.value.action === 'purchase') {
         ok = true
@@ -81,21 +89,21 @@ import TransactionsService from '@/Services/TransaccionesService';
             if(Movimiento.value.crypto_amount <= moneda.balance){
               ok = true
             }else{
-              console.log("el monto debe ser menor a la exitencia")
+              mensaje.value = "El monto debe ser menor a la exitencia"
             }
           }
         }
       } 
     }else{
-      //hacer cartel de llenar todo bien(hablar css)
-      console.log("llena bien todo daleeee" )
+      mensaje.value = "Rellene correctamente los campos" 
     }
 
     if(ok){
       emitEvent('edit-move', {...Movimiento.value})
       closeModal()
     }else{
-      console.log("los datos para modificar deben ser validos" )
+      const alerta = document.getElementById('alerta');
+      alerta.style.display = 'block';  
     }
 
   }
