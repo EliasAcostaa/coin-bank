@@ -40,8 +40,8 @@
           </div>
         </form> 
         
-        <div class="d-grid gap-2 col-6 mx-auto">         <!-- imagenes de logos -->
-          <button class="btn btn-outline-dark" style="background-color: goldenrod" type="button" @click="ingresar()">Ingresar</button>
+        <div class="d-grid gap-2 col-6 mx-auto">       
+          <button id="boton" class="btn btn-outline-dark" style="background-color: goldenrod" type="button" @click="ingresar()">Ingresar</button>
         </div>
         
       </div>

@@ -1,5 +1,5 @@
 <template>
-    <nav v-if="CurrentRoute == 'LoginView'" class="navbar navbar-expand-lg navbar-dark bg-black">
+    <nav data-testid="barraNavegacion" v-if="CurrentRoute == 'LoginView'" class="navbar navbar-expand-lg navbar-dark bg-black">
         <div class="container">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,12 +9,12 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link :to="{name: 'ContactoView'}" @click="cambiar('ContactoView')"     
-                        class="nav-link active">Contacto</router-link>
+                        <router-link :to="{name: 'ContactoView'}" @click="cambiar('ContactoView')" data-cy="LinkNavegacion"    
+                        data-testid="NavLink" class="nav-link active">Contacto</router-link>
                     </li>
                     <li class="nav-item">  
-                        <router-link :to="{name: 'SobreNosotrosView'}" @click="cambiar('SobreNosotrosView')"     
-                        class="nav-link active">Sobre Nosotros</router-link>
+                        <router-link :to="{name: 'SobreNosotrosView'}" @click="cambiar('SobreNosotrosView')" data-cy="LinkNavegacion"    
+                        data-testid="NavLink2" class="nav-link active">Sobre Nosotros</router-link>
                     </li>
                 </ul>
             </div>
